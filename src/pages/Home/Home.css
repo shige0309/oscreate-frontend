@@ -1,0 +1,12 @@
+.home-content {
+    padding: 30vh 0 0;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.home-content-wrap {
+    padding: 0 10rem;
+    width: calc(83% - 20rem);
+}

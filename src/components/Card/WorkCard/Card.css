@@ -1,0 +1,44 @@
+.card {
+    padding: 2rem 2rem 0;
+    background-color: #fff;
+    filter: drop-shadow(0 0 0.3rem rgba(0,0,0,.6));
+}
+
+.card-tag {
+    text-align: center;
+}
+
+.card-tag span {
+    position: relative;
+    display: inline-block;
+}
+
+.card-tag span::before,
+.card-tag span::after {
+    content: "";
+    width: 3rem;
+    height: 0.1rem;
+    background-color: #000;
+    display: block;
+    position: absolute;
+    top: 50%;
+}
+
+.card-tag span::before {
+    left: -5rem;
+}
+
+.card-tag span::after {
+    right: -5rem;
+}
+
+.card-name {
+    margin: 1.5rem 0 0;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.card figcaption {
+    padding: 4rem 0;
+}

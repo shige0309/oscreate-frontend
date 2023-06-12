@@ -1,0 +1,12 @@
+.homeTitle {
+    margin: 0 0 5rem;
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+}
+
+.homeTitle h2 {
+    margin: 0 2rem 0 0;
+    font-size: 6.8rem;
+    line-height: 1;
+}

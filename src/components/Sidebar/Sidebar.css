@@ -1,0 +1,57 @@
+.sidebar {
+    background-color: #fff;
+    width: 17%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    filter: drop-shadow(0 3rem 2rem rgba(0, 0, 0, 0.3));
+}
+
+.sidebar::before {
+    content: "";
+    width: 5rem;
+    height: 0.1rem;
+    display: block;
+    background-color: #000;
+    position: absolute;
+    top: 4rem;
+}
+
+.sidebar::after {
+    content: "";
+    width: 5rem;
+    height: 0.1rem;
+    display: block;
+    background-color: #000;
+    position: absolute;
+    bottom: 4rem;
+}
+
+.sidebar-wrap {
+    position: relative;
+}
+
+.sidebar header {
+    position: relative;
+}
+
+.sidebar-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-list-item {
+    margin: 2rem 0 0;
+}
+
+.sidebar-login {
+    position: absolute;
+    bottom: 7rem;
+}

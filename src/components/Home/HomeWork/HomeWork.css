@@ -1,0 +1,9 @@
+.homeWork-card {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.homeWork-card .card {
+    width: calc(50% - 6rem);
+}

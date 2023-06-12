@@ -1,0 +1,28 @@
+.homeCatch-warp {
+    text-align: center;
+}
+
+.homeCatch-logo-img {
+    margin: 0 auto;
+    padding: 0 0 0 2rem;
+    width: 13.5rem;
+}
+
+.homeCatch-logo-img img {
+    width: 100%;
+}
+
+.homeCatch-logo-text {
+    margin: 2rem 0 0;
+    color: #fff;
+}
+
+.homeCatch-heading span {
+    margin: 4rem 0 0;
+    text-align: center;
+    text-align: left;
+    display: inline-block;
+    font-size: 4.8rem;
+    color: #fff;
+    line-height: 1.4;
+}

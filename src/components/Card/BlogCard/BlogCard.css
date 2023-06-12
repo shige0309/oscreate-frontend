@@ -1,0 +1,24 @@
+.blogCard {
+    margin: 0 0 4rem;
+    padding: 2rem;
+    background-color: #fff;
+    filter: drop-shadow(0 0 0.3rem rgba(0,0,0,.6));
+}
+
+.blogCard figure {
+    display: flex;
+    gap: 4rem;
+}
+
+.blogCard-img p {
+    width: 31rem;
+}
+
+.blogCard-img figcaption {
+    width: calc(100% - 31rem);
+}
+
+.blogCard-title {
+    margin: 1rem 0;
+    font-size: 2.4rem;
+}
