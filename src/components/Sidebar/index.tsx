@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom"
 import "./Sidebar.css";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import {Link as Scroll} from 'react-scroll';
+import { HashLink } from "react-router-hash-link";
 
 export const Sidebar = () => {
     const [url, setUrl] = useState<string>("");
@@ -45,30 +46,42 @@ export const Sidebar = () => {
                     <nav>
                         <ul className="sidebar-list">
                             <li className="sidebar-list-item">
-                            {url === "/" 
-                                ?<Scroll to="top" smooth={true} onClick={slideTrigger}>TOP</Scroll>
-                                :<Link to="/">TOP</Link>
-                            }
+                                {url === "/" 
+                                    ?<Scroll to="top" smooth={true} onClick={slideTrigger}>TOP</Scroll>
+                                    :<Link to="/">TOP</Link>
+                                }
                             </li>
                             <li className="sidebar-list-item">
-                                <Scroll to="profile" smooth={true} onClick={slideTrigger}>
-                                    PROFILE
-                                </Scroll>
+                                {url === "/" 
+                                    ?<Scroll to="profile" smooth={true} onClick={slideTrigger}>
+                                        PROFILE
+                                    </Scroll>
+                                    :<HashLink to="/#profile">PROFILE</HashLink>
+                                }
                             </li>
                             <li className="sidebar-list-item">
-                                <Scroll to="profile" smooth={true} onClick={slideTrigger}>
-                                    SKILL
-                                </Scroll>
+                                {url === "/" 
+                                    ?<Scroll to="profile" smooth={true} onClick={slideTrigger}>
+                                        SKILL
+                                    </Scroll>
+                                    :<HashLink to="/#profile">SKILL</HashLink>
+                                }
                             </li>
                             <li className="sidebar-list-item">
-                                <Scroll to="work" smooth={true} onClick={slideTrigger}>
-                                    WORKS
-                                </Scroll>
+                                {url === "/" 
+                                    ?<Scroll to="work" smooth={true} onClick={slideTrigger}>
+                                        WORKS
+                                    </Scroll>
+                                    :<HashLink to="/#work">WORKS</HashLink>
+                                }
                             </li>
                             <li className="sidebar-list-item">
-                                <Scroll to="blog" smooth={true} onClick={slideTrigger}>
-                                    BLOG
-                                </Scroll>
+                                {url === "/" 
+                                    ?<Scroll to="blog" smooth={true} onClick={slideTrigger}>
+                                        BLOG
+                                    </Scroll>
+                                    :<HashLink to="/#blog">BLOG</HashLink>
+                                }
                             </li>
                             <li className="sidebar-list-item">
                                 <Link to="/contact">

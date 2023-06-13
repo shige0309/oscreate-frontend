@@ -1,34 +1,30 @@
 import { Contact } from '../../components/Contact';
 import { HomeBlog } from '../../components/Home/HomeBlog';
 import { HomeCatch } from '../../components/Home/HomeCatch';
-import { HomeMain } from '../../components/Home/HomeMain';
+import { MainVisual } from '../../components/MainVisual';
 import { HomeProfile } from '../../components/Home/HomeProfile';
 import { HomeWork } from '../../components/Home/HomeWork';
-import './Home.css'
+import { Content } from '../../components/Content';
 
 export const Home = () => {
   return (
-    <>
     <main>
       <div id="top">
-        <HomeMain />
+        <MainVisual image={"top-main.jpg"}/>
       </div>
-      <div className="home-content">
-        <div className="home-content-wrap">
-            <HomeCatch />
-            <div id="profile">
-              <HomeProfile />
-            </div>
-            <div id="work">
-              <HomeWork />
-            </div>
-            <div id="blog">
-              <HomeBlog />
-            </div>
-            <Contact />
+      <Content>
+        <HomeCatch />
+        <div id="profile">
+          <HomeProfile />
         </div>
-      </div>
+        <div id="work">
+          <HomeWork />
+        </div>
+        <div id="blog">
+          <HomeBlog />
+        </div>
+        <Contact />
+      </Content>
     </main>
-    </>
   );
 }
