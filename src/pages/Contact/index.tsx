@@ -3,6 +3,7 @@ import { SubPageTitle } from '../../components/SubPageTitle'
 import { SubContent } from '../../components/SubContent'
 import { Content } from '../../components/Content'
 import { Contact } from '../../components/Contact'
+import './Contact.css';
 
 export const ContactPage = () => {
   return (
@@ -15,6 +16,10 @@ export const ContactPage = () => {
                 3日経っても返事がない場合、申し訳ありませんが再度ご連絡ください。</p>
             </div>
             <SubContent>
+              <dl className="contact">
+                <dt>お名前</dt>
+                <dd><input type="text" /></dd>
+              </dl>
             </SubContent>
             <Contact />
         </Content>

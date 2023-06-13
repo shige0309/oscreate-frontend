@@ -1,5 +1,5 @@
-import { Card } from '../../Card/WorkCard'
-import { SectionTitle } from '../../SectionTitle';
+import { Card } from '../../../../components/Card/WorkCard'
+import { SectionTitle } from '../../../../components/SectionTitle';
 import './HomeWork.css';
 
 export const HomeWork = () => {

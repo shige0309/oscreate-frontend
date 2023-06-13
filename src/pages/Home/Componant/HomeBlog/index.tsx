@@ -1,5 +1,5 @@
-import { SectionTitle } from '../../SectionTitle'
-import { BlogCard } from '../../Card/BlogCard'
+import { SectionTitle } from '../../../../components/SectionTitle'
+import { BlogCard } from '../../../../components/Card/BlogCard'
 
 export const HomeBlog = () => {
   return (

@@ -1,10 +1,10 @@
 import { Contact } from '../../components/Contact';
-import { HomeBlog } from '../../components/Home/HomeBlog';
-import { HomeCatch } from '../../components/Home/HomeCatch';
 import { MainVisual } from '../../components/MainVisual';
-import { HomeProfile } from '../../components/Home/HomeProfile';
-import { HomeWork } from '../../components/Home/HomeWork';
 import { Content } from '../../components/Content';
+import { HomeCatch } from './Componant/HomeCatch';
+import { HomeProfile } from './Componant/HomeProfile';
+import { HomeWork } from './Componant/HomeWork';
+import { HomeBlog } from './Componant/HomeBlog';
 
 export const HomePage = () => {
   return (
