@@ -6,6 +6,7 @@ import { BlogPage } from './pages/Blog';
 import { ContactFormPage } from './pages/Contact/ContactForm';
 import { ContactThanksPage } from './pages/Contact/ContactThanks';
 import { Login } from './pages/Login';
+import { WorksRegister } from './pages/Work/WorksRegister';
 
 function App() {
   return(
@@ -17,6 +18,7 @@ function App() {
           <Route path='/contact' element={<ContactFormPage />}/>
           <Route path='/contact/thanks' element={<ContactThanksPage />}/>
           <Route path='/login' element={<Login />}/>
+          <Route path='/works/register' element={<WorksRegister />}/>
         </Routes>
       </Router>
   )

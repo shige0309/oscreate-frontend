@@ -1,4 +1,4 @@
-import { FadeInComponent } from '../../FadeInComponent';
+import { FadeInComponent } from 'components/FadeInComponent';
 import './BlogCard.css';
 
 export const BlogCard = () => {

@@ -1,12 +1,12 @@
-import { Button } from '../../components/Button'
-import { Contact } from "../../components/Contact"
-import { Content } from "../../components/Content"
-import { Footer } from '../../components/Footer'
-import { FormContainer } from "../../components/Form/FormContainer"
-import { MainVisual } from "../../components/MainVisual"
-import { Sidebar } from '../../components/Sidebar'
-import { SubContent } from "../../components/SubContent"
-import { SubPageTitle } from "../../components/SubPageTitle"
+import { Button } from 'components/Button'
+import { Contact } from "components/Contact"
+import { Content } from "components/Content"
+import { Footer } from 'components/Footer'
+import { FormContainer } from "components/Form/FormContainer"
+import { MainVisual } from "components/MainVisual"
+import { Sidebar } from 'components/Sidebar'
+import { SubContent } from "components/SubContent"
+import { SubPageTitle } from "components/SubPageTitle"
 
 export const ContactThanksPage = () => {
   return (

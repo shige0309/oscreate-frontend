@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import "./Sidebar.css";
-import { useWindowSize } from "../../hooks/useWindowSize";
 import {Link as Scroll} from 'react-scroll';
 import { HashLink } from "react-router-hash-link";
+import { useWindowSize } from "hooks/useWindowSize";
+import "./Sidebar.css";
 
 export const Sidebar = () => {
     const [url, setUrl] = useState<string>("");

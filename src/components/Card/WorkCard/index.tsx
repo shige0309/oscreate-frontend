@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Card.css';
-import { FadeInComponent } from '../../FadeInComponent';
+import { FadeInComponent } from 'components/FadeInComponent';
 
 export const Card = () => {
   return (
