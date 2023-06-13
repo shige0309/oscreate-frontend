@@ -1,4 +1,5 @@
-import { FadeInComponent } from "../../../../components/FadeInComponent"
+
+import { FadeInComponent } from "components/FadeInComponent"
 import "./HomeProfile.css"
 
 export const HomeProfile = () => {

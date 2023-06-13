@@ -8,11 +8,11 @@ export const useWindowSize = (): number[] => {
             setSize([window.innerWidth, window.innerHeight]);
         }
 
-        window.addEventListener('resize', updateSize);
+        window.addEventListener("resize", updateSize);
 
         updateSize();
 
-        return () => window.removeEventListener('resize', updateSize);
+        return () => window.removeEventListener("resize", updateSize);
     }, []);
 
     return size

@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import './Card.css';
-import { FadeInComponent } from 'components/FadeInComponent';
+import { Link } from "react-router-dom";
+import "./Card.css";
+import { FadeInComponent } from "components/FadeInComponent";
 
 export const Card = () => {
   return (
@@ -8,7 +8,7 @@ export const Card = () => {
         <FadeInComponent>
           <Link to={"/work/"}>
               <figure>
-                <p className="c-card-img"><img src="work/1-1.jpg" alt='キャトル株式会社様'/></p>
+                <p className="c-card-img"><img src="work/1-1.jpg" alt="キャトル株式会社様"/></p>
                 <figcaption>
                   <p className="c-card-tag"><span>WEB SITE</span></p>
                   <p className="c-card-name">キャトル株式会社様</p>

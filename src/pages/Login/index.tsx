@@ -1,10 +1,10 @@
-import { FormContainer } from 'components/Form/FormContainer';
-import { MainVisual } from 'components/MainVisual';
-import { SubContent } from 'components/SubContent';
-import { SubPageTitle } from 'components/SubPageTitle';
-import { Button } from 'components/Button'
-import { Footer } from './Componants/Footer';
-import './Login.css';
+import { FormContainer } from "components/Form/FormContainer";
+import { MainVisual } from "components/MainVisual";
+import { SubContent } from "components/SubContent";
+import { SubPageTitle } from "components/SubPageTitle";
+import { Button } from "components/Button"
+import { Footer } from "./Components/Footer";
+import "./Login.css";
 
 export const Login = () => {
   return (

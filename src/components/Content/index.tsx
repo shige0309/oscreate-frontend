@@ -1,5 +1,5 @@
 import {ReactNode } from "react"
-import './Content.css';
+import "./Content.css";
 
 export const Content = ({children}:{children: ReactNode}) => {
   return (

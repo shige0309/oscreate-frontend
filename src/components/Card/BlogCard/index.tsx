@@ -1,5 +1,5 @@
-import { FadeInComponent } from 'components/FadeInComponent';
-import './BlogCard.css';
+import { FadeInComponent } from "components/FadeInComponent";
+import "./BlogCard.css";
 
 export const BlogCard = () => {
   return (

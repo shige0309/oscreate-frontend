@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import {Link as Scroll} from 'react-scroll';
+import {Link as Scroll} from "react-scroll";
 import { HashLink } from "react-router-hash-link";
 import { useWindowSize } from "hooks/useWindowSize";
 import "./Sidebar.css";

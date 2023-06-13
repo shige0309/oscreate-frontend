@@ -1,11 +1,11 @@
-import { Sidebar } from 'components/Sidebar';
-import { MainVisual } from 'components/MainVisual';
-import { Content } from 'components/Content';
-import { SubPageTitle } from 'components/SubPageTitle';
-import { SubContent } from 'components/SubContent';
-import { Contact } from 'components/Contact';
-import { Footer } from 'components/Footer';
-import './Blog.css';
+import { Sidebar } from "components/Sidebar/Front";
+import { MainVisual } from "components/MainVisual";
+import { Content } from "components/Content";
+import { SubPageTitle } from "components/SubPageTitle";
+import { SubContent } from "components/SubContent";
+import { Contact } from "components/Contact";
+import { Footer } from "components/Footer";
+import "./Blog.css";
 
 export const BlogPage = () => {
   return (

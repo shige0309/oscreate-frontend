@@ -1,6 +1,6 @@
-import { Card } from '../../../../components/Card/WorkCard'
-import { SectionTitle } from '../../../../components/SectionTitle';
-import './HomeWork.css';
+import { SectionTitle } from "components/SectionTitle";
+import { Card } from "components/Card/WorkCard";
+import "./HomeWork.css";
 
 export const HomeWork = () => {
   return (

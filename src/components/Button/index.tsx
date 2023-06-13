@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import './Button.css';
+import { Link } from "react-router-dom";
+import "./Button.css";
 
 type buttonProps = {
   buttonType: "button" | "link";
@@ -8,9 +8,9 @@ type buttonProps = {
 }
 
 export const Button = (props: buttonProps) => {
-  if (props.buttonType === 'button') {
+  if (props.buttonType === "button") {
 
-    return <button type='submit' className="c-form-button">{props.text}</button>;
+    return <button type="submit" className="c-form-button">{props.text}</button>;
     
   } else {
 

@@ -1,4 +1,4 @@
-import './SubPageTitle.css'
+import "./SubPageTitle.css"
 
 type TitleProps = {
     title: string;

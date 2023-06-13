@@ -2,10 +2,10 @@ import { Contact } from "components/Contact"
 import { Content } from "components/Content"
 import { Footer } from "components/Footer"
 import { MainVisual } from "components/MainVisual"
-import { Sidebar } from "components/Sidebar"
+import { Sidebar } from "components/Sidebar/Front"
 import { SubContent } from "components/SubContent"
 import { SubPageTitle } from "components/SubPageTitle"
-import './Work.css'
+import "./Work.css"
 
 export const WorkPage = () => {
   return (

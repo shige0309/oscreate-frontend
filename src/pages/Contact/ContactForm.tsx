@@ -1,13 +1,13 @@
-import { Sidebar } from 'components/Sidebar';
-import { MainVisual } from 'components/MainVisual';
-import { Content } from 'components/Content';
-import { SubPageTitle } from 'components/SubPageTitle';
-import { SubContent } from 'components/SubContent';
-import { FormContainer } from 'components/Form/FormContainer';
-import { Button } from 'components/Button'
-import { Contact } from 'components/Contact';
-import { Footer } from 'components/Footer';
-import './Contact.css';
+import { Sidebar } from "components/Sidebar/Front";
+import { MainVisual } from "components/MainVisual";
+import { Content } from "components/Content";
+import { SubPageTitle } from "components/SubPageTitle";
+import { SubContent } from "components/SubContent";
+import { FormContainer } from "components/Form/FormContainer";
+import { Button } from "components/Button"
+import { Contact } from "components/Contact";
+import { Footer } from "components/Footer";
+import "./Contact.css";
 
 export const ContactFormPage = () => {
   return (
