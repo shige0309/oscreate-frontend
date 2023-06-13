@@ -37,21 +37,21 @@ export const Sidebar = () => {
 
   return (
     <div>
-        <div className={`sidebar ${sidebarActive ?? "active"}`}>
-            <div className="sidebar-wrap">
+        <div className={`c-sidebar ${sidebarActive ?? "active"}`}>
+            <div className="c-sidebar-wrap">
                 <header>
                     {url === "/"
                     ? ( <h1><img src="/logo.svg" alt="ロゴ" /></h1> )
                     : (<p><img src="/logo.svg" alt="ロゴ" /></p>)}
                     <nav>
-                        <ul className="sidebar-list">
-                            <li className="sidebar-list-item">
+                        <ul className="c-sidebar-list">
+                            <li className="c-sidebar-list-item">
                                 {url === "/" 
                                     ?<Scroll to="top" smooth={true} onClick={slideTrigger}>TOP</Scroll>
                                     :<Link to="/">TOP</Link>
                                 }
                             </li>
-                            <li className="sidebar-list-item">
+                            <li className="c-sidebar-list-item">
                                 {url === "/" 
                                     ?<Scroll to="profile" smooth={true} onClick={slideTrigger}>
                                         PROFILE
@@ -59,7 +59,7 @@ export const Sidebar = () => {
                                     :<HashLink to="/#profile">PROFILE</HashLink>
                                 }
                             </li>
-                            <li className="sidebar-list-item">
+                            <li className="c-sidebar-list-item">
                                 {url === "/" 
                                     ?<Scroll to="profile" smooth={true} onClick={slideTrigger}>
                                         SKILL
@@ -67,7 +67,7 @@ export const Sidebar = () => {
                                     :<HashLink to="/#profile">SKILL</HashLink>
                                 }
                             </li>
-                            <li className="sidebar-list-item">
+                            <li className="c-sidebar-list-item">
                                 {url === "/" 
                                     ?<Scroll to="work" smooth={true} onClick={slideTrigger}>
                                         WORKS
@@ -75,7 +75,7 @@ export const Sidebar = () => {
                                     :<HashLink to="/#work">WORKS</HashLink>
                                 }
                             </li>
-                            <li className="sidebar-list-item">
+                            <li className="c-sidebar-list-item">
                                 {url === "/" 
                                     ?<Scroll to="blog" smooth={true} onClick={slideTrigger}>
                                         BLOG
@@ -83,7 +83,7 @@ export const Sidebar = () => {
                                     :<HashLink to="/#blog">BLOG</HashLink>
                                 }
                             </li>
-                            <li className="sidebar-list-item">
+                            <li className="c-sidebar-list-item">
                                 <Link to="/contact">
                                     CONTACT
                                 </Link>
@@ -92,12 +92,12 @@ export const Sidebar = () => {
                     </nav>
                 </header>
             </div>
-            <p className="sidebar-login"><Link to={"/login"}>LOGIN</Link></p>
+            <p className="c-sidebar-login"><Link to={"/login"}>LOGIN</Link></p>
         </div>
-        <div className={`sidebar-hamburger ${sidebarActive ?? "active"}`}>
-            <div className="sidebar-hamburger-wrap">
-                <div className="sidebar-hamburger-block">
-                    <button className={`sidebar-hamburger-trigger ${sidebarActive ?? "active"}`} onClick={hamburgerTrigger}>
+        <div className={`c-sidebar-hamburger ${sidebarActive ?? "active"}`}>
+            <div className="c-sidebar-hamburger-wrap">
+                <div className="c-sidebar-hamburger-block">
+                    <button className={`c-sidebar-hamburger-trigger ${sidebarActive ?? "active"}`} onClick={hamburgerTrigger}>
                         <span></span>
                         <span></span>
                         <span></span>

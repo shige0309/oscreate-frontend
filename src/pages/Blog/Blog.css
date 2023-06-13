@@ -1,0 +1,23 @@
+.blog-title-date {
+    margin: 6rem 0 10rem;
+    color: #fff;
+}
+
+.blog-date {
+    margin: 0 0 1rem;
+    display: block;
+}
+
+.blog-title {
+    font-size: 3.6rem;
+}
+
+.blog-content p {
+    margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 576px){
+    .blog-title {
+        font-size: 6vw;
+    }
+}

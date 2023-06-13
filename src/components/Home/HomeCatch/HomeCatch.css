@@ -1,23 +1,23 @@
-.homeCatch-warp {
+.c-homeCatch-warp {
     text-align: center;
 }
 
-.homeCatch-logo-img {
+.c-homeCatch-logo-img {
     margin: 0 auto;
     padding: 0 0 0 2rem;
     width: 13.5rem;
 }
 
-.homeCatch-logo-img img {
+.c-homeCatch-logo-img img {
     width: 100%;
 }
 
-.homeCatch-logo-text {
+.c-homeCatch-logo-text {
     margin: 2rem 0 0;
     color: #fff;
 }
 
-.homeCatch-heading span {
+.c-homeCatch-heading span {
     margin: 4rem 0 0;
     text-align: center;
     text-align: left;
@@ -28,7 +28,7 @@
 }
 
 @media screen and (max-width: 576px){
-    .homeCatch-heading span {
+    .c-homeCatch-heading span {
         font-size: 11vw;
     }
 }

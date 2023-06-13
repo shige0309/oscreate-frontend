@@ -1,4 +1,4 @@
-.sidebar {
+.c-sidebar {
     background-color: #fff;
     width: 17%;
     height: 100vh;
@@ -13,7 +13,7 @@
     transition: .4s;
 }
 
-.sidebar::before {
+.c-sidebar::before {
     content: "";
     width: 5rem;
     height: 0.1rem;
@@ -23,7 +23,7 @@
     top: 4rem;
 }
 
-.sidebar::after {
+.c-sidebar::after {
     content: "";
     width: 5rem;
     height: 0.1rem;
@@ -33,47 +33,47 @@
     bottom: 4rem;
 }
 
-.sidebar-wrap {
+.c-sidebar-wrap {
     position: relative;
 }
 
-.sidebar header {
+.c-sidebar header {
     position: relative;
 }
 
-.sidebar-list {
+.c-sidebar-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.sidebar-list-item {
+.c-sidebar-list-item {
     margin: 2rem 0 0;
     cursor: pointer;
 }
 
-.sidebar-login {
+.c-sidebar-login {
     position: absolute;
     bottom: 7rem;
 }
 
-.sidebar-hamburger {
+.c-sidebar-hamburger {
     display: none;
 }
 
 @media screen and (max-width: 769px){
-    .sidebar {
+    .c-sidebar {
         margin: 0 0 0 -20rem;
         width: 20rem;
         z-index: 10;
     }
 
-    .sidebar.active {
+    .c-sidebar.active {
         margin: 0;
     }
 
-    .sidebar-hamburger {
+    .c-sidebar-hamburger {
         padding: 2rem;
         background-color: rgba(0, 0, 0, 0.6);
         position: fixed;
@@ -85,18 +85,18 @@
         transition: .4s;
     }
 
-    .sidebar-hamburger.active {
+    .c-sidebar-hamburger.active {
         left: 24rem;
     }
 
-    .sidebar-hamburger-trigger,
-    .sidebar-hamburger-trigger span {
+    .c-sidebar-hamburger-trigger,
+    .c-sidebar-hamburger-trigger span {
         display: inline-block;
         transition: all .4s;
         box-sizing: border-box;
     }
 
-    .sidebar-hamburger-trigger {
+    .c-sidebar-hamburger-trigger {
         position: relative;
         width: 6vw;
         height: 5vw;
@@ -106,7 +106,7 @@
         cursor: pointer;
     }
 
-    .sidebar-hamburger-trigger span {
+    .c-sidebar-hamburger-trigger span {
         position: absolute;
         left: 0;
         width: 100%;
@@ -115,52 +115,52 @@
         border-radius: 4px;
     }
 
-    .sidebar-hamburger-trigger span:nth-of-type(1) {
+    .c-sidebar-hamburger-trigger span:nth-of-type(1) {
         top: 0;
     }
 
-    .sidebar-hamburger-trigger span:nth-of-type(2) {
+    .c-sidebar-hamburger-trigger span:nth-of-type(2) {
         top: 2.3vw;
     }
 
-    .sidebar-hamburger-trigger span:nth-of-type(3) {
+    .c-sidebar-hamburger-trigger span:nth-of-type(3) {
         bottom: 0;
     }
 
-    .sidebar-hamburger-trigger.active span:nth-of-type(1) {
+    .c-sidebar-hamburger-trigger.active span:nth-of-type(1) {
         transform: translateY(17px) rotate(-45deg);
     }
 
-    .sidebar-hamburger-trigger.active span:nth-of-type(2) {
+    .c-sidebar-hamburger-trigger.active span:nth-of-type(2) {
         opacity: 0;
     }
 
-    .sidebar-hamburger-trigger.active span:nth-of-type(3) {
+    .c-sidebar-hamburger-trigger.active span:nth-of-type(3) {
         transform: translateY(-18px) rotate(45deg);
     }
 }
 
 @media screen and (max-width: 576px){
-    .sidebar-hamburger {
+    .c-sidebar-hamburger {
         padding: 1.3rem;
         top: 2rem;
         left: 2rem;
     }
 
-    .sidebar-hamburger-trigger {
+    .c-sidebar-hamburger-trigger {
         width: 7vw;
         height: 6vw;
     }
 
-    .sidebar-hamburger-trigger span:nth-of-type(2) {
+    .c-sidebar-hamburger-trigger span:nth-of-type(2) {
         top: 2.4vw;
     }
 
-    .sidebar-hamburger-trigger.active span:nth-of-type(1) {
+    .c-sidebar-hamburger-trigger.active span:nth-of-type(1) {
         transform: translateY(8px) rotate(-45deg);
     }
 
-    .sidebar-hamburger-trigger.active span:nth-of-type(3) {
+    .c-sidebar-hamburger-trigger.active span:nth-of-type(3) {
         transform: translateY(-13px) rotate(45deg);
     }
 }

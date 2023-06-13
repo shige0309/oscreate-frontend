@@ -6,7 +6,7 @@ import { HomeProfile } from '../../components/Home/HomeProfile';
 import { HomeWork } from '../../components/Home/HomeWork';
 import { Content } from '../../components/Content';
 
-export const Home = () => {
+export const HomePage = () => {
   return (
     <main>
       <div id="top">
@@ -18,10 +18,14 @@ export const Home = () => {
           <HomeProfile />
         </div>
         <div id="work">
-          <HomeWork />
+          <div className="homeSection">
+            <HomeWork />
+          </div>
         </div>
         <div id="blog">
-          <HomeBlog />
+          <div className="homeSection">
+            <HomeBlog />
+          </div>
         </div>
         <Contact />
       </Content>

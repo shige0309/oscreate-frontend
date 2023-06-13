@@ -1,4 +1,4 @@
-.contact a {
+.c-contact a {
     padding: 1.3rem;
     background-color: #ebbC50;
     display: block;
@@ -9,7 +9,7 @@
     justify-content: space-between;
 }
 
-.contact a::after {
+.c-contact a::after {
     margin: 0 6rem 0 0;
     content: "";
     background-image: url(../../../public/icon/arrow-right.svg);
@@ -21,12 +21,12 @@
     height: 3.3rem;
 }
 
-.contact-wrap {
+.c-contact-wrap {
     display: flex;
     align-items: center;
 }
 
-.contact-mail {
+.c-contact-mail {
     background-color: #fff;
     width: 12.8rem;
     height: 12.8rem;
@@ -36,28 +36,28 @@
     align-items: center;
 }
 
-.contact-text {
+.c-contact-text {
     margin: 0 0 0 6rem;
     font-size: 3.8rem;
     color: #fff;
 }
 
 @media screen and (max-width: 576px){
-    .contact-mail {
+    .c-contact-mail {
         width: 5rem;
         height: 5rem;
     }
-    .contact-mail img {
+    .c-contact-mail img {
         width: 50%;
         height: 40%;
     }
 
-    .contact-text {
+    .c-contact-text {
         margin: 0 0 0 2rem;
         font-size: 6vw;
     }
 
-    .contact a::after {
+    .c-contact a::after {
         margin: 0 1rem 0 0;
         width: 2.3rem;
         height: 2.3rem;
