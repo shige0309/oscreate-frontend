@@ -279,3 +279,9 @@ strong {
 .homeSection {
   margin: 13rem 0;
 }
+
+@media screen and (max-width: 576px){
+  .homeSection {
+    margin: 10rem 0;
+  }
+}

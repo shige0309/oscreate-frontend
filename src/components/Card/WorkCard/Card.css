@@ -1,7 +1,8 @@
-.card {
+.card a {
     padding: 2rem 2rem 0;
     background-color: #fff;
     filter: drop-shadow(0 0 0.3rem rgba(0,0,0,.6));
+    display: block;
 }
 
 .card-tag {
@@ -41,4 +42,10 @@
 
 .card figcaption {
     padding: 4rem 0;
+}
+
+@media screen and (max-width: 769px){
+    .card-name {
+        font-size: 2.2vw;
+    }
 }

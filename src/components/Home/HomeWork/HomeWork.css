@@ -5,5 +5,11 @@
 }
 
 .homeWork-card .card {
-    width: calc(50% - 6rem);
+    width: calc(50% - 2rem);
+}
+
+@media screen and (max-width: 576px){
+    .homeWork-card .card {
+        width: 100%;
+    }
 }

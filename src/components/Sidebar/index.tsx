@@ -1,59 +1,97 @@
-import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useCallback, useEffect, useState } from "react"
+import { Link, useLocation } from "react-router-dom"
 import "./Sidebar.css";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import {Link as Scroll} from 'react-scroll';
 
 export const Sidebar = () => {
     const [url, setUrl] = useState<string>("");
-    const location = useLocation().pathname;
+    const location: string = useLocation().pathname;
+    const [sidebarActive, setSidebarActive] = useState<string>("");
+    const [slideActive, setSlideActive] = useState<boolean>(false);
+    const [width] = useWindowSize();
 
     useEffect(() => {
         setUrl(location);
     }, [location]);
 
+    const hamburgerTrigger = useCallback(() => {
+        if(sidebarActive === "active") {
+            setSidebarActive("");
+        } else {
+            setSidebarActive("active");
+        }
+    },[sidebarActive]);
+
+    const slideTrigger = useCallback(() =>{
+        if(width <= 769) {
+            if(sidebarActive === "") {
+                setSidebarActive("active");
+            } else {
+                setSidebarActive("");
+            }
+            setSlideActive(!slideActive);
+        }
+    },[sidebarActive, slideActive, width]);
+
   return (
-    <div className='sidebar'>
-        <div className='sidebar-wrap'>
-            <header>
-                {url === "/"
-                ? ( <h1><img src="/logo.svg" alt="ロゴ" /></h1> )
-                : (<p><img src="/logo.svg" alt="ロゴ" /></p>)}
-                <nav>
-                    <ul className='sidebar-list'>
-                        <li className='sidebar-list-item'>
-                            <Link to="#">
-                                TOP
-                            </Link>
-                        </li>
-                        <li className='sidebar-list-item'>
-                            <Link to="#profile">
-                                PROFILE
-                            </Link>
-                        </li>
-                        <li className='sidebar-list-item'>
-                            <Link to="#skill">
-                                SKILL
-                            </Link>
-                        </li>
-                        <li className='sidebar-list-item'>
-                            <Link to="#work">
-                                WORKS
-                            </Link>
-                        </li>
-                        <li className='sidebar-list-item'>
-                            <Link to="#blog">
-                                BLOG
-                            </Link>
-                        </li>
-                        <li className='sidebar-list-item'>
-                            <Link to="/contact">
-                                CONTACT
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+    <div>
+        <div className={`sidebar ${sidebarActive ?? "active"}`}>
+            <div className="sidebar-wrap">
+                <header>
+                    {url === "/"
+                    ? ( <h1><img src="/logo.svg" alt="ロゴ" /></h1> )
+                    : (<p><img src="/logo.svg" alt="ロゴ" /></p>)}
+                    <nav>
+                        <ul className="sidebar-list">
+                            <li className="sidebar-list-item">
+                            {url === "/" 
+                                ?<Scroll to="top" smooth={true} onClick={slideTrigger}>TOP</Scroll>
+                                :<Link to="/">TOP</Link>
+                            }
+                            </li>
+                            <li className="sidebar-list-item">
+                                <Scroll to="profile" smooth={true} onClick={slideTrigger}>
+                                    PROFILE
+                                </Scroll>
+                            </li>
+                            <li className="sidebar-list-item">
+                                <Scroll to="profile" smooth={true} onClick={slideTrigger}>
+                                    SKILL
+                                </Scroll>
+                            </li>
+                            <li className="sidebar-list-item">
+                                <Scroll to="work" smooth={true} onClick={slideTrigger}>
+                                    WORKS
+                                </Scroll>
+                            </li>
+                            <li className="sidebar-list-item">
+                                <Scroll to="blog" smooth={true} onClick={slideTrigger}>
+                                    BLOG
+                                </Scroll>
+                            </li>
+                            <li className="sidebar-list-item">
+                                <Link to="/contact">
+                                    CONTACT
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>
+            <p className="sidebar-login"><Link to={"/login"}>LOGIN</Link></p>
         </div>
-        <p className='sidebar-login'><Link to={"/login"}>LOGIN</Link></p>
+        <div className={`sidebar-hamburger ${sidebarActive ?? "active"}`}>
+            <div className="sidebar-hamburger-wrap">
+                <div className="sidebar-hamburger-block">
+                    <button className={`sidebar-hamburger-trigger ${sidebarActive ?? "active"}`} onClick={hamburgerTrigger}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
   )
 }

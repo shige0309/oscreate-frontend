@@ -6,8 +6,11 @@
 }
 
 .homeSection-card-block {
-    background-color: #fff;
     width: calc(50% - 2rem);
+}
+
+.homeSection-card-block figure {
+    background-color: #fff;
 }
 
 .homeSection-card-block figcaption {
@@ -49,4 +52,18 @@
 
 .homeSection-card-block-def dd:last-of-type {
     margin: 0;
+}
+
+@media screen and (max-width: 769px){
+    .homeSection-card {
+        flex-direction: column;
+    }
+
+    .homeSection-card-block {
+        width: 100%;
+    }
+
+    .homeSection-card-block:nth-child(2) {
+        margin: 0;
+    }
 }

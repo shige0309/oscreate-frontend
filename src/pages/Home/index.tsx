@@ -1,3 +1,4 @@
+import { Contact } from '../../components/Contact';
 import { HomeBlog } from '../../components/Home/HomeBlog';
 import { HomeCatch } from '../../components/Home/HomeCatch';
 import { HomeMain } from '../../components/Home/HomeMain';
@@ -9,13 +10,22 @@ export const Home = () => {
   return (
     <>
     <main>
-      <HomeMain />
+      <div id="top">
+        <HomeMain />
+      </div>
       <div className="home-content">
         <div className="home-content-wrap">
             <HomeCatch />
-            <HomeProfile />
-            <HomeWork />
-            <HomeBlog />
+            <div id="profile">
+              <HomeProfile />
+            </div>
+            <div id="work">
+              <HomeWork />
+            </div>
+            <div id="blog">
+              <HomeBlog />
+            </div>
+            <Contact />
         </div>
       </div>
     </main>
