@@ -5,9 +5,13 @@ import { HomeCatch } from './Componant/HomeCatch';
 import { HomeProfile } from './Componant/HomeProfile';
 import { HomeWork } from './Componant/HomeWork';
 import { HomeBlog } from './Componant/HomeBlog';
+import { Sidebar } from '../../components/Sidebar';
+import { Footer } from '../../components/Footer';
 
 export const HomePage = () => {
   return (
+    <>
+    <Sidebar />
     <main>
       <div id="top">
         <MainVisual image={"top-main.jpg"}/>
@@ -30,5 +34,7 @@ export const HomePage = () => {
         <Contact />
       </Content>
     </main>
+    <Footer />
+    </>
   );
 }

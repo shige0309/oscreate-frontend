@@ -2,4 +2,6 @@
     margin: 0 0 6rem;
     padding: 2rem;
     background-color: #fff;
+    position: relative;
+    z-index: 2;
 }

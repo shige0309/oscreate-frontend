@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import "./Sidebar.css";
 import { useWindowSize } from "../../hooks/useWindowSize";
@@ -16,15 +16,15 @@ export const Sidebar = () => {
         setUrl(location);
     }, [location]);
 
-    const hamburgerTrigger = useCallback(() => {
+    const hamburgerTrigger = () => {
         if(sidebarActive === "active") {
             setSidebarActive("");
         } else {
             setSidebarActive("active");
         }
-    },[sidebarActive]);
+    }
 
-    const slideTrigger = useCallback(() =>{
+    const slideTrigger = () => {
         if(width <= 769) {
             if(sidebarActive === "") {
                 setSidebarActive("active");
@@ -33,7 +33,7 @@ export const Sidebar = () => {
             }
             setSlideActive(!slideActive);
         }
-    },[sidebarActive, slideActive, width]);
+    }
 
   return (
     <div>

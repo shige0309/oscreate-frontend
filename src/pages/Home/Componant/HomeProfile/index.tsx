@@ -37,12 +37,20 @@ export const HomeProfile = () => {
                         <dt>言語</dt>
                         <dd>HTML5・CSS3・SCSS・Javascript<br />
                         ・React.js・Node.js・Mysql</dd>
+                      </dl>
+                      <dl className="c-homeProfile-card-block-def">
                         <dt>CMS</dt>
                         <dd>Wordpress</dd>
+                      </dl>
+                      <dl className="c-homeProfile-card-block-def">
                         <dt>フレームワーク</dt>
                         <dd>Laravel</dd>
+                      </dl>
+                      <dl className="c-homeProfile-card-block-def">
                         <dt>デザインツール</dt>
                         <dd>Photoshop・Illustrator・AdobeXD</dd>
+                      </dl>
+                      <dl className="c-homeProfile-card-block-def">
                         <dt>その他</dt>
                         <dd>Git・Gulp</dd>
                       </dl>

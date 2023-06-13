@@ -1,3 +1,7 @@
+.c-homeProfile {
+    margin: 10rem 0 0;
+}
+
 .c-homeProfile-card {
     display: flex;
     align-items: center;
@@ -40,6 +44,10 @@
     left: 50%;
     transform:translateY(-50%) translateX(-50%);
     color: #fff;
+}
+
+.c-homeProfile-card-block-def {
+    margin: 0 0 2rem;
 }
 
 .c-homeProfile-card-block-def dt {
