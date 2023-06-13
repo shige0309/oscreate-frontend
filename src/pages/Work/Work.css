@@ -1,0 +1,20 @@
+.work {
+    text-align: center;
+    color: #fff;
+}
+
+.work-title-en {
+    margin: 0 0 1rem;
+    font-weight: 700;
+    font-size: 4.8rem;
+    line-height: 1;
+}
+
+.work-title-sub {
+    font-weight: 700;
+}
+
+.work-title-title {
+    margin: 4rem 0 10rem;
+    font-size: 2.8rem;
+}
