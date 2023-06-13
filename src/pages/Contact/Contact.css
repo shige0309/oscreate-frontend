@@ -3,3 +3,22 @@
     text-align: center;
     color: #fff;
 }
+
+.contact-def {
+    margin: 0 0 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.contact-def dt {
+    width: 20%;
+}
+
+.contact-def dd {
+    width: 80%;
+}
+
+.contact-button {
+    margin: 0 auto;
+    width: 60%;
+}
