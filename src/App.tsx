@@ -9,9 +9,10 @@ import { Login } from "./pages/Login";
 import { WorksRegister } from "./pages/Work/WorksRegister";
 import { BlogRegister } from "pages/Blog/BlogRegister";
 import { AdminUpdate } from "pages/AdminUpdate";
-
+import { useAppSelector } from "stores/hooks";
 
 function App() {
+  const {admin} = useAppSelector((state) => state);
   return(
       <BrowserRouter>
         <Routes>
@@ -20,10 +21,10 @@ function App() {
           <Route path="/blog" element={<BlogPage />}/>
           <Route path="/contact" element={<ContactFormPage />}/>
           <Route path="/contact/thanks" element={<ContactThanksPage />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/works/register" element={<WorksRegister />}/>
-          <Route path="/blog/register" element={<BlogRegister />}/>
-          <Route path="/admin/update" element={<AdminUpdate />}/>
+          <Route path="/login" element={admin.user ? <WorksRegister /> : <Login />}/>
+          <Route path="/works/register" element={admin.user ? <WorksRegister /> : <Login />}/>
+          <Route path="/blog/register" element={admin.user ? <BlogRegister /> : <Login />}/>
+          <Route path="/admin/update" element={admin.user ? <AdminUpdate /> : <Login />}/>
         </Routes>
       </BrowserRouter>
   )

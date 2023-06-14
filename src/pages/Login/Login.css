@@ -24,3 +24,8 @@
 .login-title {
     margin: 0 0 4rem;
 }
+
+.login-topLink {
+    margin: 2rem 0 0;
+    text-align: center;
+}

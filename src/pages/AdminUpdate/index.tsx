@@ -20,11 +20,11 @@ export const AdminUpdate = () => {
               </div>
               <SubContent>
                 <FormContainer>
-                  <dl className="contact-def">
+                  <dl className="form-def">
                     <dt>名前</dt>
                     <dd><input type="text" /></dd>
                   </dl>
-                  <dl className="contact-def">
+                  <dl className="form-def">
                     <dt>パスワード</dt>
                     <dd><input type="email" /></dd>
                   </dl>

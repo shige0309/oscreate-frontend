@@ -20,19 +20,19 @@ export const BlogRegister = () => {
               </div>
               <SubContent>
                 <FormContainer>
-                  <dl className="contact-def">
+                  <dl className="form-def">
                     <dt>タイトル</dt>
                     <dd><input type="text" /></dd>
                   </dl>
-                  <dl className="contact-def">
+                  <dl className="form-def">
                     <dt>サムネイル</dt>
                     <dd><input type="file" /></dd>
                   </dl>
-                  <dl className="contact-def">
+                  <dl className="form-def">
                     <dt>詳細画像</dt>
                     <dd><input type="file" /></dd>
                   </dl>
-                  <dl className="contact-def">
+                  <dl className="form-def">
                     <dt>内容</dt>
                     <dd><textarea name="description" id=""></textarea></dd>
                   </dl>

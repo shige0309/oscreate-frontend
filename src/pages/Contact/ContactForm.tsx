@@ -23,15 +23,15 @@ export const ContactFormPage = () => {
               </div>
               <SubContent>
                 <FormContainer>
-                  <dl className="contact-def">
+                  <dl className="form-def">
                     <dt>お名前</dt>
                     <dd><input type="text" /></dd>
                   </dl>
-                  <dl className="contact-def">
+                  <dl className="form-def">
                     <dt>メールアドレス</dt>
                     <dd><input type="email" /></dd>
                   </dl>
-                  <dl className="contact-def">
+                  <dl className="form-def">
                     <dt>内容</dt>
                     <dd><textarea name=""></textarea></dd>
                   </dl>

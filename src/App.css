@@ -215,7 +215,6 @@ button {
 input[type=text],
 input[type=email],
 input[type=submit],
-input[type=submit],
 textarea,
 select {
   -webkit-appearance: none;
@@ -232,6 +231,7 @@ address {
 input[type=text],
 input[type=tel],
 input[type=email],
+input[type=password],
 input[type=number],
 select {
   width: 100%;

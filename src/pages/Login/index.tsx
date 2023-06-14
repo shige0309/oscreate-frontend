@@ -4,9 +4,71 @@ import { SubContent } from "components/SubContent";
 import { SubPageTitle } from "components/SubPageTitle";
 import { Button } from "components/Button"
 import { Footer } from "./Components/Footer";
+import { useState } from "react";
+import { useAppDispatch } from "stores/hooks";
+import { setAdmin } from "stores/slice/adminSlice";
+import { Link } from "react-router-dom";
 import "./Login.css";
+import axios, { AxiosResponse } from "axios";
+import { adminType } from "Type";
 
 export const Login = () => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [emailCheck, setEmailCheck] = useState<string>("");
+  const [passwordCheck, setPasswordCheck] = useState<string>("");
+
+  const dispatch = useAppDispatch();
+
+  const checkEmailInput = (e:React.ChangeEvent<HTMLInputElement> ) => {
+    setEmail(e.target.value);
+    setEmailCheck("");
+  }
+
+  const checkPasswordInput = (e:React.ChangeEvent<HTMLInputElement> ) => {
+    setPassword(e.target.value);
+    setPasswordCheck("");
+   }
+
+  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if(email === "") {
+      setEmailCheck("メールアドレスは必須です。");
+    }
+
+    if(password === "") {
+      setPasswordCheck("パスワードは必須です。");
+    } else if(password.length <= 6 && password.length <= 20) {
+      setPasswordCheck("6文字以上20文字以内でご入力ください。");
+    }
+
+    if(emailCheck !== "" || passwordCheck !== "") {
+      return false;
+    }
+
+    try {
+      const admin = {
+        email: email,
+        password: password
+      }
+
+      // const resAdmin:AxiosResponse<any> = await axios.post("/admin/register", admin);
+
+      const resAdmin:AxiosResponse<any> = await axios.post("/admin/login", admin);
+
+      const adminType: adminType = {
+        id: resAdmin.data._id,
+        username: resAdmin.data.username
+      }
+
+      dispatch(setAdmin(adminType));
+    } catch (error) {
+      alert(error);
+    }
+
+  }
+
   return (
     <>
       <main>
@@ -19,17 +81,28 @@ export const Login = () => {
             </div>
             <SubContent>
               <FormContainer>
-                <dl className="form-def">
-                  <dt>ユーザー名</dt>
-                  <dd><input type="text" /></dd>
-                </dl>
-                <dl className="form-def">
-                  <dt>パスワード</dt>
-                  <dd><input type="email" /></dd>
-                </dl>
-                <div className="contact-button">
-                  <Button buttonType={"button"} text={"ログイン"} link={"/"}/>
-                </div>
+                <form onSubmit={(e) => handleSubmit(e)}>
+                  <dl className="form-def">
+                    <dt>メールアドレス</dt>
+                    <dd>
+                      <input type="email" onChange={(e) => checkEmailInput(e)}/>
+                      {emailCheck && <p className="form-attention">{emailCheck}</p>}
+                    </dd>
+                  </dl>
+                  <dl className="form-def">
+                    <dt>パスワード</dt>
+                    <dd>
+                      <input type="password" onChange={(e) => checkPasswordInput(e)}/>
+                      {passwordCheck && <p className="form-attention">{passwordCheck}</p>}
+                    </dd>
+                  </dl>
+                  <div className="contact-button">
+                    <Button buttonType={"button"} text={"ログイン"} link={"/"}/>
+                  </div>
+                </form>
+                <p className="login-topLink">
+                  <Link to="/">ホームへ戻る</Link>
+                </p>
               </FormContainer>
             </SubContent>
           </div>
