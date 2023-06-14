@@ -6,35 +6,27 @@ import { SubContent } from "components/SubContent"
 import { SubPageTitle } from "components/SubPageTitle"
 import { Button } from "components/Button"
 import { FormContainer } from "components/Form/FormContainer"
-import "./WorksRegister.css"
+import "./AdminUpdate.css"
 
-export const WorksRegister = () => {
+export const AdminUpdate = () => {
   return (
     <>
       <Sidebar />
       <main>
           <MainVisual image={"contact/mv.jpg"}/>
           <Content>
-              <div className="c-works-register">
-                  <SubPageTitle title={"WORKS登録"} sub={""}/>
+              <div className="c-admin-register">
+                  <SubPageTitle title={"管理者更新"} sub={""}/>
               </div>
               <SubContent>
                 <FormContainer>
                   <dl className="contact-def">
-                    <dt>タグ</dt>
+                    <dt>名前</dt>
                     <dd><input type="text" /></dd>
                   </dl>
                   <dl className="contact-def">
-                    <dt>タイトル</dt>
+                    <dt>パスワード</dt>
                     <dd><input type="email" /></dd>
-                  </dl>
-                  <dl className="contact-def">
-                    <dt>サムネイル</dt>
-                    <dd><input type="file" /></dd>
-                  </dl>
-                  <dl className="contact-def">
-                    <dt>詳細画像</dt>
-                    <dd><input type="file" /></dd>
                   </dl>
                   <div className="contact-button">
                     <Button buttonType={"button"} text={"登録する"} link={""}/>

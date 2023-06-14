@@ -1,16 +1,19 @@
 import "./App.css";
 import { HomePage } from "./pages/Home";
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import { WorkPage } from "./pages/Work";
 import { BlogPage } from "./pages/Blog";
 import { ContactFormPage } from "./pages/Contact/ContactForm";
 import { ContactThanksPage } from "./pages/Contact/ContactThanks";
 import { Login } from "./pages/Login";
 import { WorksRegister } from "./pages/Work/WorksRegister";
+import { BlogRegister } from "pages/Blog/BlogRegister";
+import { AdminUpdate } from "pages/AdminUpdate";
+
 
 function App() {
   return(
-      <Router>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/work" element={<WorkPage />}/>
@@ -19,8 +22,10 @@ function App() {
           <Route path="/contact/thanks" element={<ContactThanksPage />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/works/register" element={<WorksRegister />}/>
+          <Route path="/blog/register" element={<BlogRegister />}/>
+          <Route path="/admin/update" element={<AdminUpdate />}/>
         </Routes>
-      </Router>
+      </BrowserRouter>
   )
 }
 

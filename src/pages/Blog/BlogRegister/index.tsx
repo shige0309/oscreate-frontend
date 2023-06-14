@@ -8,25 +8,21 @@ import { Button } from "components/Button"
 import { FormContainer } from "components/Form/FormContainer"
 import "./WorksRegister.css"
 
-export const WorksRegister = () => {
+export const BlogRegister = () => {
   return (
     <>
       <Sidebar />
       <main>
           <MainVisual image={"contact/mv.jpg"}/>
           <Content>
-              <div className="c-works-register">
-                  <SubPageTitle title={"WORKS登録"} sub={""}/>
+              <div className="c-blog-register">
+                  <SubPageTitle title={"BLOG登録"} sub={""}/>
               </div>
               <SubContent>
                 <FormContainer>
                   <dl className="contact-def">
-                    <dt>タグ</dt>
-                    <dd><input type="text" /></dd>
-                  </dl>
-                  <dl className="contact-def">
                     <dt>タイトル</dt>
-                    <dd><input type="email" /></dd>
+                    <dd><input type="text" /></dd>
                   </dl>
                   <dl className="contact-def">
                     <dt>サムネイル</dt>
@@ -35,6 +31,10 @@ export const WorksRegister = () => {
                   <dl className="contact-def">
                     <dt>詳細画像</dt>
                     <dd><input type="file" /></dd>
+                  </dl>
+                  <dl className="contact-def">
+                    <dt>内容</dt>
+                    <dd><textarea name="description" id=""></textarea></dd>
                   </dl>
                   <div className="contact-button">
                     <Button buttonType={"button"} text={"登録する"} link={""}/>
