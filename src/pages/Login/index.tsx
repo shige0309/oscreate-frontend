@@ -4,21 +4,20 @@ import { SubContent } from "components/SubContent";
 import { SubPageTitle } from "components/SubPageTitle";
 import { Button } from "components/Button"
 import { Footer } from "./Components/Footer";
-import { useState } from "react";
-import { useAppDispatch } from "stores/hooks";
-import { setAdmin } from "stores/slice/adminSlice";
-import { Link } from "react-router-dom";
-import "./Login.css";
-import axios, { AxiosResponse } from "axios";
+import { useEffect, useState } from "react";
+import { Link, useNavigate} from "react-router-dom";
+import { useAdmin } from "hooks/useAdmin";
 import { adminType } from "Type";
+import "./Login.css";
+import { useAppSelector } from "stores/hooks";
 
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [emailCheck, setEmailCheck] = useState<string>("");
   const [passwordCheck, setPasswordCheck] = useState<string>("");
-
-  const dispatch = useAppDispatch();
+  const { login } = useAdmin();
+  const {admin} = useAppSelector((state) => state);
 
   const checkEmailInput = (e:React.ChangeEvent<HTMLInputElement> ) => {
     setEmail(e.target.value);
@@ -37,7 +36,7 @@ export const Login = () => {
       setEmailCheck("メールアドレスは必須です。");
     }
 
-    if(password === "") {
+    if(email === "") {
       setPasswordCheck("パスワードは必須です。");
     } else if(password.length <= 6 && password.length <= 20) {
       setPasswordCheck("6文字以上20文字以内でご入力ください。");
@@ -48,21 +47,11 @@ export const Login = () => {
     }
 
     try {
-      const admin = {
+      const admin: adminType = {
         email: email,
         password: password
       }
-
-      // const resAdmin:AxiosResponse<any> = await axios.post("/admin/register", admin);
-
-      const resAdmin:AxiosResponse<any> = await axios.post("/admin/login", admin);
-
-      const adminType: adminType = {
-        id: resAdmin.data._id,
-        username: resAdmin.data.username
-      }
-
-      dispatch(setAdmin(adminType));
+      login(admin);
     } catch (error) {
       alert(error);
     }

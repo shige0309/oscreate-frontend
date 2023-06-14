@@ -33,13 +33,13 @@ export const Sidebar = () => {
                                 <Link to="/">HOME</Link>
                             </li>
                             <li className="c-sidebar-list-item">
-                                <Link to="/">WORKS登録</Link>
+                                <Link to="/works/register">WORKS登録</Link>
                             </li>
                             <li className="c-sidebar-list-item">
-                                <Link to="/#profile">BLOG登録</Link>
+                                <Link to="/blog/register">BLOG登録</Link>
                             </li>
                             <li className="c-sidebar-list-item">
-                                <Link to="/#profile">ユーザー更新</Link>
+                                <Link to="/admin/update">管理者更新</Link>
                             </li>
                         </ul>
                     </nav>

@@ -10,9 +10,23 @@ import { WorksRegister } from "./pages/Work/WorksRegister";
 import { BlogRegister } from "pages/Blog/BlogRegister";
 import { AdminUpdate } from "pages/AdminUpdate";
 import { useAppSelector } from "stores/hooks";
+import { useEffect } from "react";
+import axios from "axios";
+import { useAdmin } from "hooks/useAdmin";
 
 function App() {
   const {admin} = useAppSelector((state) => state);
+  const {getAdmin} = useAdmin();
+
+  useEffect(() => {
+    if(!admin.id) {
+      const token = localStorage.getItem('token');
+      if(token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        getAdmin();
+      }
+    }
+  }, [admin]);
   return(
       <BrowserRouter>
         <Routes>
@@ -21,10 +35,10 @@ function App() {
           <Route path="/blog" element={<BlogPage />}/>
           <Route path="/contact" element={<ContactFormPage />}/>
           <Route path="/contact/thanks" element={<ContactThanksPage />}/>
-          <Route path="/login" element={admin.user ? <WorksRegister /> : <Login />}/>
-          <Route path="/works/register" element={admin.user ? <WorksRegister /> : <Login />}/>
-          <Route path="/blog/register" element={admin.user ? <BlogRegister /> : <Login />}/>
-          <Route path="/admin/update" element={admin.user ? <AdminUpdate /> : <Login />}/>
+          <Route path="/login" element={admin.id ? <WorksRegister /> : <Login />}/>
+          <Route path="/works/register" element={admin.id ? <WorksRegister /> : <Login />}/>
+          <Route path="/blog/register" element={admin.id ? <BlogRegister /> : <Login />}/>
+          <Route path="/admin/update" element={admin.id ? <AdminUpdate /> : <Login />}/>
         </Routes>
       </BrowserRouter>
   )

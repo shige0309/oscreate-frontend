@@ -1,21 +1,19 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { adminType } from "Type";
 
 type adminSliceType = {
-    user: adminType | null;
+    id: string | null;
 }
 
 const admin: adminSliceType = {
-    user: JSON.parse(localStorage.getItem("user")!) || null,
+    id: null,
 }
 
 const adminSlice = createSlice({
     name: "adminSlice",
     initialState: admin,
     reducers: {
-        setAdmin: (state, action:PayloadAction<adminType>) => {
-            localStorage.setItem("user", JSON.stringify(action.payload));
-            state.user = action.payload;
+        setAdmin: (state, action:PayloadAction<string>) => {
+            state.id = action.payload;
         }
     }
 });
