@@ -4,6 +4,7 @@ import {Link as Scroll} from "react-scroll";
 import { HashLink } from "react-router-hash-link";
 import { useWindowSize } from "hooks/useWindowSize";
 import "./Sidebar.css";
+import { useAppSelector } from "stores/hooks";
 
 export const Sidebar = () => {
     const [url, setUrl] = useState<string>("");
@@ -11,6 +12,7 @@ export const Sidebar = () => {
     const [sidebarActive, setSidebarActive] = useState<string>("");
     const [slideActive, setSlideActive] = useState<boolean>(false);
     const [width] = useWindowSize();
+    const { admin } = useAppSelector((state) => state);
 
     useEffect(() => {
         setUrl(location);
@@ -92,7 +94,7 @@ export const Sidebar = () => {
                     </nav>
                 </header>
             </div>
-            <p className="c-sidebar-login"><Link to={"/login"}>LOGIN</Link></p>
+            <p className="c-sidebar-login"><Link to={"/login"}>{admin.id ? "管理画面" : "LOGIN"}</Link></p>
         </div>
         <div className={`c-sidebar-hamburger ${sidebarActive ?? "active"}`}>
             <div className="c-sidebar-hamburger-wrap">

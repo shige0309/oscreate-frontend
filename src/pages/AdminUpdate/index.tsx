@@ -6,9 +6,25 @@ import { SubContent } from "components/SubContent"
 import { SubPageTitle } from "components/SubPageTitle"
 import { Button } from "components/Button"
 import { FormContainer } from "components/Form/FormContainer"
+import { useAppSelector } from "stores/hooks"
 import "./AdminUpdate.css"
+import { useEffect } from "react"
+import { useAdmin } from "hooks/useAdmin"
 
 export const AdminUpdate = () => {
+  const {admin} = useAppSelector((state) => state);
+  const {getRegisterAdmin} = useAdmin();
+
+  useEffect(() => {
+    const getAdmin = async () => {
+      if(admin.id) {
+        const response = await getRegisterAdmin(admin.id!);
+        console.log('response',response!.data);
+      }
+    }
+
+    getAdmin();
+  }, [admin, getRegisterAdmin]);
   return (
     <>
       <Sidebar />

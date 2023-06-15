@@ -26,7 +26,7 @@ function App() {
         getAdmin();
       }
     }
-  }, [admin]);
+  }, [admin, getAdmin]);
   return(
       <BrowserRouter>
         <Routes>

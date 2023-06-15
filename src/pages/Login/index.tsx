@@ -4,12 +4,11 @@ import { SubContent } from "components/SubContent";
 import { SubPageTitle } from "components/SubPageTitle";
 import { Button } from "components/Button"
 import { Footer } from "./Components/Footer";
-import { useEffect, useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { useState } from "react";
+import { Link} from "react-router-dom";
 import { useAdmin } from "hooks/useAdmin";
 import { adminType } from "Type";
 import "./Login.css";
-import { useAppSelector } from "stores/hooks";
 
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -17,7 +16,6 @@ export const Login = () => {
   const [emailCheck, setEmailCheck] = useState<string>("");
   const [passwordCheck, setPasswordCheck] = useState<string>("");
   const { login } = useAdmin();
-  const {admin} = useAppSelector((state) => state);
 
   const checkEmailInput = (e:React.ChangeEvent<HTMLInputElement> ) => {
     setEmail(e.target.value);

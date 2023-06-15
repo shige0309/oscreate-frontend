@@ -58,6 +58,11 @@
     bottom: 7rem;
 }
 
+.c-sidebar-login button {
+    background-color: transparent;
+    font-size: 1.6rem;
+}
+
 .c-sidebar-hamburger {
     display: none;
 }

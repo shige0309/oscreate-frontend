@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import "./Sidebar.css";
+import { useAdmin } from "hooks/useAdmin";
 
 export const Sidebar = () => {
     const [url, setUrl] = useState<string>("");
     const location: string = useLocation().pathname;
     const [sidebarActive, setSidebarActive] = useState<string>("");
+    const {logout} = useAdmin();
 
     useEffect(() => {
         setUrl(location);
@@ -45,7 +47,7 @@ export const Sidebar = () => {
                     </nav>
                 </header>
             </div>
-            <p className="c-sidebar-login"><Link to={"/login"}>LOGOUT</Link></p>
+            <p className="c-sidebar-login"><button onClick={logout}>LOGOUT</button></p>
         </div>
         <div className={`c-sidebar-hamburger ${sidebarActive ?? "active"}`}>
             <div className="c-sidebar-hamburger-wrap">
