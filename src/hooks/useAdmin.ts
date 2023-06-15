@@ -29,22 +29,23 @@ export const useAdmin = () => {
         }
     }
 
-    const getRegisterAdmin = async (id:string): Promise<AxiosResponse | undefined> => {
+    const getRegisterAdmin = async (): Promise<AxiosResponse<any>> => {
         try {
-            const token = localStorage.getItem('token');
-            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             const response: AxiosResponse = await axios.get("/admin");
             return response;
         } catch (error) {
             console.log(error);
+            throw error;
         }
     }
 
-    const updateAdmin = async () => {
+    const updateAdmin = async (updateData: adminType): Promise<AxiosResponse<any>> => {
         try {
-            const response: AxiosResponse = await axios.get("/update");
+            const response: AxiosResponse = await axios.put("/admin/update", updateData);
+            return response;
         } catch (error) {
             console.log(error);
+            throw error;
         }
     }
 

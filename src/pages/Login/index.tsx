@@ -34,7 +34,7 @@ export const Login = () => {
       setEmailCheck("メールアドレスは必須です。");
     }
 
-    if(email === "") {
+    if(password === "") {
       setPasswordCheck("パスワードは必須です。");
     } else if(password.length <= 6 && password.length <= 20) {
       setPasswordCheck("6文字以上20文字以内でご入力ください。");
