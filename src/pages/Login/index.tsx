@@ -25,7 +25,7 @@ export const Login = () => {
   const checkPasswordInput = (e:React.ChangeEvent<HTMLInputElement> ) => {
     setPassword(e.target.value);
     setPasswordCheck("");
-   }
+  }
 
   const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

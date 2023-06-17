@@ -91,7 +91,8 @@ export const AdminUpdate = () => {
               </div>
               <SubContent>
                 {isAlertVisible &&
-                <Alert changeAlertVisible={changeAlertVisible}/>}
+                  <Alert changeAlertVisible={changeAlertVisible}/>
+                }
                 <FormContainer>
                   <form onSubmit={(e) => handleSubmit(e)}>
                     <dl className="form-def">
