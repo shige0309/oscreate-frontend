@@ -2,8 +2,14 @@ import { AtomicBlockUtils, ContentBlock, ContentState, DraftEditorCommand, Edito
 import React, { useCallback, useState } from "react";
 import "./TextEditor.css";
 import { linkDecorator } from "./Link";
+import { type } from "os";
 
-export const TextEditor = () => {
+type TextEditorProps = {
+    editorState: EditorState;
+    setEditorState: React.Dispatch<React.SetStateAction<EditorState>>;
+}
+
+export const TextEditor = ({ editorState, setEditorState }: TextEditorProps) => {
 
     type BlockComponentProps = {
         contentState: ContentState;
@@ -24,7 +30,7 @@ export const TextEditor = () => {
         }
     };
 
-    const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty(linkDecorator));
+    // const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty(linkDecorator));
     const [isUploading, setIsUploading] = React.useState(false);
 
     const handleKeyCommand = (command: DraftEditorCommand) => {

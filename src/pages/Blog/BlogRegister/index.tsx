@@ -10,16 +10,26 @@ import "./WorksRegister.css"
 import { Alert } from "components/Alert"
 import { useCallback, useRef, useState } from "react"
 import { TextEditor } from "components/TextEditor/TextEditor"
+import axios from "axios"
+import { blogType, newImageType, uploadImageData } from "Type"
+import { useAppSelector } from "stores/hooks"
+import { EditorState, RawDraftContentState, convertToRaw } from "draft-js"
+import { linkDecorator } from "components/TextEditor/Link"
+import { useUploadImage } from "hooks/useUploadImage";
+import { useBlog } from "hooks/useBlog";
 
 export const BlogRegister = () => {
+  const {admin} = useAppSelector((state) => state);
   const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
-  const [tagCheck, setTagCheck] = useState<string>("");
   const [titleCheck, setTitleCheck] = useState<string>("");
   const [thumbnail, setThumbnail] = useState<File | null >(null);
   const [descriptionImage, setDescriptionImage] = useState<File | null>(null);
   const thumbnailInputRef = useRef<HTMLInputElement>(null);
   const descriptionImageInputRef = useRef<HTMLInputElement>(null);
+  const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty(linkDecorator));
+  const { prepareAndUploadImages } = useUploadImage();
+  const { registerBlog } = useBlog();
 
   const checkTitleInput = (e:React.ChangeEvent<HTMLInputElement> ) => {
     setTitle(e.target.value);
@@ -27,7 +37,45 @@ export const BlogRegister = () => {
   }
 
   const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
+    if(title === "") {
+      setTitleCheck("タイトルは必須です。");
+      return false;
+    }
+
+    const newBlog: blogType = {
+      adminId: admin.id!,
+      title: title,
+      content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
+      thumbnail: "",
+      descriptionImage: "",
+    }
+    
+    let blogData: blogType = newBlog;
+
+    if(thumbnail || descriptionImage) {
+      blogData = prepareAndUploadImages(thumbnail, descriptionImage, blogData, newBlog) as blogType;
+    }
+
+    try {
+      await registerBlog(blogData);
+
+      if(thumbnailInputRef.current) {
+        thumbnailInputRef.current.value = '';
+      }
+
+      if(descriptionImageInputRef.current) {
+        descriptionImageInputRef.current.value = '';
+      }
+
+      setIsAlertVisible(true);
+      setTitle("");
+      setTitleCheck("");
+
+    } catch (error) {
+      alert(`エラーが発生しました。${error}`);
+    }
   }
   
   const operationFile = (e: React.ChangeEvent<HTMLInputElement>, target: "Thumbnail" | "DescriptionImage") => {
@@ -66,7 +114,10 @@ export const BlogRegister = () => {
                   <form onSubmit={(e) => handleSubmit(e)}>
                     <dl className="form-def">
                       <dt>タイトル</dt>
-                      <dd><input type="text" onChange={(e) => checkTitleInput(e)} value={title}/></dd>
+                      <dd>
+                        <input type="text" onChange={(e) => checkTitleInput(e)} value={title}/>
+                        {titleCheck && <p className="form-attention">{titleCheck}</p>}
+                      </dd>
                     </dl>
                     <dl className="form-def">
                       <dt>サムネイル</dt>
@@ -79,7 +130,7 @@ export const BlogRegister = () => {
                     <dl className="form-def">
                       <dt>内容</dt>
                         <dd>
-                          <TextEditor />
+                          <TextEditor editorState={editorState} setEditorState={setEditorState}/>
                         </dd>
                     </dl>
                     <div className="contact-button">

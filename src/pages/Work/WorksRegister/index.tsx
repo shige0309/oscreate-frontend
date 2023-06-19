@@ -9,10 +9,11 @@ import { FormContainer } from "components/Form/FormContainer"
 import "./WorksRegister.css"
 import { useCallback, useRef, useState } from "react"
 import { useAppSelector } from "stores/hooks"
-import { workType } from "Type"
+import { newImageType, uploadImageData, workType } from "Type"
 import axios from "axios"
 import { useWork } from "hooks/useWork"
 import { Alert } from "components/Alert"
+import {useUploadImage} from "hooks/useUploadImage";
 
 export const WorksRegister = () => {
   const {admin} = useAppSelector((state) => state);
@@ -26,6 +27,7 @@ export const WorksRegister = () => {
   const thumbnailInputRef = useRef<HTMLInputElement>(null);
   const descriptionImageInputRef = useRef<HTMLInputElement>(null);
   const {register} = useWork();
+  const { prepareAndUploadImages } = useUploadImage();
 
   const checkTagInput = (e:React.ChangeEvent<HTMLInputElement> ) => {
     setTag(e.target.value);
@@ -39,16 +41,20 @@ export const WorksRegister = () => {
 
   const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    let isTagEmpty = false;
+    let isTitleEmpty = false;
 
     if(tag === "") {
       setTagCheck("タグは必須です。");
+      isTagEmpty = true;
     }
 
     if(title === "") {
       setTitleCheck("パスワードは必須です。");
+      isTitleEmpty = true;
     }
 
-    if(tagCheck !== "" || titleCheck !== "") {
+    if(isTagEmpty || isTitleEmpty) {
       return false;
     }
 
@@ -57,28 +63,18 @@ export const WorksRegister = () => {
       tag: tag,
       title: title,
       thumbnail: "",
-      descriptionImage: ""
+      descriptionImage: "",
     }
 
-    let addImagesWork: workType;
+    let workData: workType = newWork;
 
     if(thumbnail || descriptionImage) {
-      const images = {
-        thumbnail: thumbnail,
-        descriptionImage: descriptionImage,
-      }
-  
-      addImagesWork = await uploadImage(newWork, images);
-    } else {
-      addImagesWork = newWork;
+      workData = prepareAndUploadImages(thumbnail, descriptionImage, workData, newWork) as workType;
     }
 
     try {
-      await register(addImagesWork);
-      setIsAlertVisible(true);
-      setTag("");
-      setTitle("");
-
+      await register(workData);
+      
       if(thumbnailInputRef.current) {
         thumbnailInputRef.current.value = '';
       }
@@ -86,32 +82,15 @@ export const WorksRegister = () => {
       if(descriptionImageInputRef.current) {
         descriptionImageInputRef.current.value = '';
       }
-      
+
+      setIsAlertVisible(true);
+      setTag("");
+      setTitle("");
+      setTagCheck("");
+      setTitleCheck("");
     } catch (error) {
       alert(`エラーが発生しました。${error}`);
     }
-  }
-
-  const uploadImage = async (newWork: workType, images: Record<string, File | null>): Promise<workType> => {
-    let updatedWork = { ...newWork };
-    await Promise.all(Object.entries(images)
-      .filter(([key, image]) => image !== null) 
-      .map(async ([key, image]) => {
-        const data = new FormData();
-        const fileName = Date.now() + image!.name;
-        data.append("name", fileName);
-        data.append("file", image!);
-        updatedWork[key as keyof workType] = fileName;
-
-        try {
-            //画像APIを叩く
-            await axios.post("/upload", data);
-        } catch (error) {
-          alert(`画像のアップロードに失敗しました。${error}`);
-        }
-    }));
-
-    return updatedWork;
   }
 
   const operationFile = (e: React.ChangeEvent<HTMLInputElement>, target: "Thumbnail" | "DescriptionImage") => {
