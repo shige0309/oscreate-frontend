@@ -1,12 +1,12 @@
-import "./App.css";
-import { HomePage } from "./pages/Home";
+import "App.css";
+import { HomePage } from "pages/Home";
 import { BrowserRouter, Route, Routes} from "react-router-dom";
-import { WorkPage } from "./pages/Work";
-import { BlogPage } from "./pages/Blog";
-import { ContactFormPage } from "./pages/Contact/ContactForm";
-import { ContactThanksPage } from "./pages/Contact/ContactThanks";
+import { WorkPage } from "pages/Work";
+import { BlogPage } from "pages/Blog";
+import { ContactFormPage } from "pages/Contact/ContactForm";
+import { ContactThanksPage } from "pages/Contact/ContactThanks";
 import { Login } from "./pages/Login";
-import { WorksRegister } from "./pages/Work/WorksRegister";
+import { WorksRegister } from "pages/Work/WorksRegister";
 import { BlogRegister } from "pages/Blog/BlogRegister";
 import { AdminUpdate } from "pages/AdminUpdate";
 import { useAppSelector } from "stores/hooks";
@@ -15,8 +15,8 @@ import axios from "axios";
 import { useAdmin } from "hooks/useAdmin";
 
 function App() {
-  const {admin} = useAppSelector((state) => state);
-  const {getAdmin} = useAdmin();
+  const { admin } = useAppSelector((state) => state);
+  const { getAdmin } = useAdmin();
 
   useEffect(() => {
     if(!admin.id) {
@@ -35,6 +35,7 @@ function App() {
           <Route path="/blog" element={<BlogPage />}/>
           <Route path="/contact" element={<ContactFormPage />}/>
           <Route path="/contact/thanks" element={<ContactThanksPage />}/>
+          <Route path="/work/:id" element={<WorkPage/>}/>
           <Route path="/login" element={admin.id ? <WorksRegister /> : <Login />}/>
           <Route path="/works/register" element={admin.id ? <WorksRegister /> : <Login />}/>
           <Route path="/blog/register" element={admin.id ? <BlogRegister /> : <Login />}/>

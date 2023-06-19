@@ -108,7 +108,7 @@ export const BlogRegister = () => {
               </div>
               <SubContent>
                 {isAlertVisible &&
-                  <Alert changeAlertVisible={changeAlertVisible}/>
+                  <Alert changeAlertVisible={changeAlertVisible} text={"BLOGを更新しました。"}/>
                 }
                 <FormContainer>
                   <form onSubmit={(e) => handleSubmit(e)}>

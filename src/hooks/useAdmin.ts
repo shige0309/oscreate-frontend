@@ -29,9 +29,9 @@ export const useAdmin = () => {
         }
     }
 
-    const getRegisterAdmin = async (): Promise<AxiosResponse<any>> => {
+    const getRegisterAdmin = async (): Promise<AxiosResponse<string>> => {
         try {
-            const response: AxiosResponse = await axios.get("/admin");
+            const response: AxiosResponse<string> = await axios.get("/admin");
             return response;
         } catch (error) {
             console.log(error);
@@ -39,9 +39,9 @@ export const useAdmin = () => {
         }
     }
 
-    const updateAdmin = async (updateData: adminType): Promise<AxiosResponse<any>> => {
+    const updateAdmin = async (updateData: adminType): Promise<AxiosResponse<string>> => {
         try {
-            const response: AxiosResponse = await axios.put("/admin/update", updateData);
+            const response: AxiosResponse<string> = await axios.put("/admin/update", updateData);
             return response;
         } catch (error) {
             console.log(error);

@@ -36,3 +36,14 @@ export type imageType = {
   thumbnail: File | null;
   descriptionImage: File | null;
 }
+
+export type getWorkType = {
+    _id: string;
+    adminId: string;
+    tag: string;
+    title: string;
+    thumbnail: string;
+    descriptionImage: string;
+    createdAt: string;
+    updatedAt: string;
+  };

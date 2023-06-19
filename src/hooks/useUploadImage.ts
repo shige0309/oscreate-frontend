@@ -14,12 +14,14 @@ export const useUploadImage = () => {
             thumbnail: thumbnail || null,
             descriptionImage: descriptionImage || null,
         }
+
+        const nowDate: number = Date.now();
     
-        uploadImagesToServer(images);
+        uploadImagesToServer(images, nowDate);
     
         const uploadImageData: uploadImageData = {
-            thumbnail: thumbnail !== null ? thumbnail.name : "",
-            descriptionImage: descriptionImage !== null ? descriptionImage.name : "",
+            thumbnail: thumbnail !== null ? nowDate + thumbnail.name : "",
+            descriptionImage: descriptionImage !== null ? nowDate + descriptionImage.name : "",
         }
     
         uploadData = {...newData, ...uploadImageData};
@@ -27,12 +29,12 @@ export const useUploadImage = () => {
         return uploadData;
     }
 
-    const uploadImagesToServer = async (images: Record<string, File | null>) => {
+    const uploadImagesToServer = async (images: Record<string, File | null>, nowDate: number) => {
         await Promise.all(Object.entries(images)
             .filter(([_, image]) => image !== null) 
             .map(async ([_, image]) => {
             const data = new FormData();
-            const fileName = Date.now() + image!.name;
+            const fileName = nowDate + image!.name;
             data.append("name", fileName);
             data.append("file", image!);
 

@@ -1,19 +1,18 @@
-import { Content } from "components/Content"
-import { Footer } from "components/Footer"
-import { MainVisual } from "components/MainVisual"
-import { Sidebar } from "components/Sidebar/Admin"
-import { SubContent } from "components/SubContent"
-import { SubPageTitle } from "components/SubPageTitle"
-import { Button } from "components/Button"
-import { FormContainer } from "components/Form/FormContainer"
-import "./WorksRegister.css"
-import { useCallback, useRef, useState } from "react"
-import { useAppSelector } from "stores/hooks"
-import { newImageType, uploadImageData, workType } from "Type"
-import axios from "axios"
-import { useWork } from "hooks/useWork"
-import { Alert } from "components/Alert"
+import { Content } from "components/Content";
+import { Footer } from "components/Footer";
+import { MainVisual } from "components/MainVisual";
+import { Sidebar } from "components/Sidebar/Admin";
+import { SubContent } from "components/SubContent";
+import { SubPageTitle } from "components/SubPageTitle";
+import { Button } from "components/Button";
+import { FormContainer } from "components/Form/FormContainer";
+import { useCallback, useRef, useState } from "react";
+import { useAppSelector } from "stores/hooks";
+import { workType } from "Type";
+import { useWork } from "hooks/useWork";
+import { Alert } from "components/Alert";
 import {useUploadImage} from "hooks/useUploadImage";
+import "./WorksRegister.css";
 
 export const WorksRegister = () => {
   const {admin} = useAppSelector((state) => state);
@@ -26,7 +25,7 @@ export const WorksRegister = () => {
   const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
   const thumbnailInputRef = useRef<HTMLInputElement>(null);
   const descriptionImageInputRef = useRef<HTMLInputElement>(null);
-  const {register} = useWork();
+  const {registerWork} = useWork();
   const { prepareAndUploadImages } = useUploadImage();
 
   const checkTagInput = (e:React.ChangeEvent<HTMLInputElement> ) => {
@@ -73,7 +72,7 @@ export const WorksRegister = () => {
     }
 
     try {
-      await register(workData);
+      await registerWork(workData);
       
       if(thumbnailInputRef.current) {
         thumbnailInputRef.current.value = '';
@@ -123,7 +122,7 @@ export const WorksRegister = () => {
               </div>
               <SubContent>
                 {isAlertVisible &&
-                  <Alert changeAlertVisible={changeAlertVisible}/>
+                  <Alert changeAlertVisible={changeAlertVisible} text={"WORKを登録しました。"}/>
                 }
                 <FormContainer>
                   <form onSubmit={(e) => handleSubmit(e)}>
@@ -143,11 +142,11 @@ export const WorksRegister = () => {
                     </dl>
                     <dl className="form-def">
                       <dt>サムネイル</dt>
-                      <dd><input type="file" accept=".png, .jpeg, .jpg" onChange={(e) => operationFile(e, "Thumbnail")} ref={thumbnailInputRef}/></dd>
+                      <dd><input type="file" accept=".png, .jpeg, .jpg, image/svg+xml" onChange={(e) => operationFile(e, "Thumbnail")} ref={thumbnailInputRef}/></dd>
                     </dl>
                     <dl className="form-def">
                       <dt>詳細画像</dt>
-                      <dd><input type="file" accept=".png, .jpeg, .jpg" onChange={(e) => operationFile(e, "DescriptionImage")} ref={descriptionImageInputRef}/></dd>
+                      <dd><input type="file" accept=".png, .jpeg, .jpg, image/svg+xml" onChange={(e) => operationFile(e, "DescriptionImage")} ref={descriptionImageInputRef}/></dd>
                     </dl>
                     <div className="contact-button">
                       <Button buttonType={"button"} text={"登録する"} link={""}/>

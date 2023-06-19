@@ -91,7 +91,7 @@ export const AdminUpdate = () => {
               </div>
               <SubContent>
                 {isAlertVisible &&
-                  <Alert changeAlertVisible={changeAlertVisible}/>
+                  <Alert changeAlertVisible={changeAlertVisible}  text={"管理者を更新しました。"}/>
                 }
                 <FormContainer>
                   <form onSubmit={(e) => handleSubmit(e)}>
