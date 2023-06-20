@@ -38,11 +38,17 @@
 }
 
 @media screen and (max-width: 576px){
-    .blogCard figure {
+    .c-blogCard figure {
         flex-direction: column;
     }
 
-    .blogCard-img p {
+    .c-blogCard-img p {
         width: 100%;
     }
+
+    .c-blogCard-title {
+        margin: 1rem 0;
+        font-size: 4.6vw;
+    }
+    
 }
