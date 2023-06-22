@@ -10,7 +10,7 @@ export const Card = ({props}: {props: getWorkType}) => {
         <FadeInComponent>
           <Link to={`/work/${props._id}`}>
               <figure>
-                <p className="c-card-img"><img src={PUBLIC_FOLDER + props.thumbnail} alt="キャトル株式会社様"/></p>
+                <p className="c-card-img"><img src={PUBLIC_FOLDER + props.thumbnail} alt={props.title}/></p>
                 <figcaption>
                   <p className="c-card-tag"><span>{props.tag}</span></p>
                   <p className="c-card-name">{props.title}</p>

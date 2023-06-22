@@ -1,6 +1,3 @@
-import { RawDraftContentState } from "draft-js";
-
-//LocalStrageAdmin
 export type adminType = {
     email: string,
     password: string;
@@ -35,6 +32,17 @@ export type uploadImageData = {
 export type imageType = {
   thumbnail: File | null;
   descriptionImage: File | null;
+}
+
+export type getBlogType = {
+    _id: string;
+    adminId: string;
+    title: string;
+    content: string;
+    thumbnail: string;
+    descriptionImage: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
 export type getWorkType = {

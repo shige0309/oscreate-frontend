@@ -7,11 +7,10 @@ import { SubContent } from "components/SubContent";
 import { SubPageTitle } from "components/SubPageTitle";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./Work.css";
 import { useWork } from "hooks/useWork";
 import { getWorkType } from "Type";
-import { workType } from "Type";
 import { AxiosResponse } from "axios";
+import "./Work.css";
 
 export const WorkPage = () => {
   const { getDetailWork } = useWork();

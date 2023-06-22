@@ -33,27 +33,29 @@ export const useUploadImage = () => {
         await Promise.all(Object.entries(images)
             .filter(([_, image]) => image !== null) 
             .map(async ([type, image]) => {
-            const data = new FormData();
+                const data = new FormData();
             
-            let fileName;
-            if(type === "thumbnail") {
-                fileName = nowDate + "-thumbnail-" + image!.name;
-            } else if(type === "descriptionImage") {
-                fileName = nowDate + "-descriptionImage-" + image!.name;
-            } else {
-                fileName = nowDate + image!.name;
-            }
-            
-            data.append("name", fileName);
-            data.append("file", image!);
+                let fileName;
+                if(type === "thumbnail") {
+                    fileName = nowDate + "-thumbnail-" + image!.name;
+                } else if(type === "descriptionImage") {
+                    fileName = nowDate + "-descriptionImage-" + image!.name;
+                } else {
+                    fileName = nowDate + image!.name;
+                }
 
-            try {
-                //画像APIを叩く
-                await axios.post("/upload", data);
-            } catch (error) {
-                alert(`画像のアップロードに失敗しました。${error}`);
+                console.log(fileName);
+            
+                data.append("name", fileName);
+                data.append("file", image!);
+
+                try {
+                    await axios.post("/upload", data);
+                } catch (error) {
+                    alert(`画像のアップロードに失敗しました。${error}`);
+                }
             }
-        }));
+        ));
     }
 
     return {prepareAndUploadImages};
