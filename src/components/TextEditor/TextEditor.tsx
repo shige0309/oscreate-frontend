@@ -1,8 +1,6 @@
 import { AtomicBlockUtils, ContentBlock, ContentState, DraftEditorCommand, Editor, EditorState, RichUtils } from "draft-js"
 import React, { useCallback, useState } from "react";
 import "./TextEditor.css";
-import { linkDecorator } from "./Link";
-import { type } from "os";
 
 type TextEditorProps = {
     editorState: EditorState;
@@ -31,7 +29,7 @@ export const TextEditor = ({ editorState, setEditorState }: TextEditorProps) => 
     };
 
     // const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty(linkDecorator));
-    const [isUploading, setIsUploading] = React.useState(false);
+    const [isUploading, setIsUploading] = useState(false);
 
     const handleKeyCommand = (command: DraftEditorCommand) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -106,7 +104,7 @@ export const TextEditor = ({ editorState, setEditorState }: TextEditorProps) => 
         const contentStateWithEntity = contentState.createEntity(
         'image',
         'MUTABLE',
-        { url: window.URL.createObjectURL(file) } // ここを変えるようにする
+        { url: window.URL.createObjectURL(file) }
         );
         const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
         let nextEditorState = EditorState.set(editorState, {
@@ -181,7 +179,7 @@ export const TextEditor = ({ editorState, setEditorState }: TextEditorProps) => 
                 }}>
                 link
             </button>
-            <label className="button">
+            {/* <label className="button">
             <input
                 className="input"
                 type="file"
@@ -189,7 +187,7 @@ export const TextEditor = ({ editorState, setEditorState }: TextEditorProps) => 
                 onChange={uploadImage}
                 disabled={isUploading}
             />
-            </label>
+            </label> */}
         </div>
         <Editor
             editorState={editorState}

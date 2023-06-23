@@ -7,7 +7,7 @@ import { Footer } from "./Components/Footer";
 import { useState } from "react";
 import { Link} from "react-router-dom";
 import { useAdmin } from "hooks/useAdmin";
-import { adminType } from "Type";
+import { AdminType } from "Type";
 import "./Login.css";
 
 export const Login = () => {
@@ -45,7 +45,7 @@ export const Login = () => {
     }
 
     try {
-      const admin: adminType = {
+      const admin: AdminType = {
         email: email,
         password: password
       }

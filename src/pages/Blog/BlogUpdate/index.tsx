@@ -7,17 +7,21 @@ import { SubPageTitle } from "components/SubPageTitle"
 import { Button } from "components/Button"
 import { FormContainer } from "components/Form/FormContainer"
 import { Alert } from "components/Alert"
-import { useCallback, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { TextEditor } from "components/TextEditor/TextEditor"
 import { BlogType } from "Type"
 import { useAppSelector } from "stores/hooks"
-import { EditorState, convertToRaw } from "draft-js"
+import { EditorState, convertFromRaw, convertToRaw } from "draft-js"
 import { linkDecorator } from "components/TextEditor/Link"
 import { useUploadImage } from "hooks/useUploadImage";
 import { useBlog } from "hooks/useBlog";
-import "./BlogRegister.css"
+import { useParams } from "react-router-dom"
+import { GetBlogType } from "Type"
+import { AxiosResponse } from "axios"
+import "./BlogUpdate.css"
 
-export const BlogRegister = () => {
+export const BlogUpdate = () => {
+  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
   const {admin} = useAppSelector((state) => state);
   const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
@@ -28,10 +32,34 @@ export const BlogRegister = () => {
   const descriptionImageInputRef = useRef<HTMLInputElement>(null);
   const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty(linkDecorator));
   const { prepareAndUploadImages } = useUploadImage();
-  const { registerBlog } = useBlog();
+  const { getDetailBlog, updateBlog } = useBlog();
   const [thumbnailURL, setThumbnailURL] = useState<string | null>(null);
   const [descriptionImageURL, setDescriptionImageURL] = useState<string | null>(null);
-  // const [ file ]
+  const [blog, setBlog] = useState<GetBlogType>();
+  const id = useParams().id;
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+
+    const getBlog = async () => {
+
+      if(id) {
+        const blog: AxiosResponse<GetBlogType> = await getDetailBlog(id);
+        setTitle(blog.data.title);
+        setBlog(blog.data);
+
+        const rawContent = JSON.parse(blog.data.content);
+
+        const contentState = convertFromRaw(rawContent);
+        const newEditorState = EditorState.createWithContent(contentState);
+
+        setEditorState(newEditorState);
+      }
+    }
+
+    getBlog();
+
+  }, [])
 
   const checkTitleInput = (e:React.ChangeEvent<HTMLInputElement> ) => {
     setTitle(e.target.value);
@@ -50,8 +78,8 @@ export const BlogRegister = () => {
       adminId: admin.id!,
       title: title,
       content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
-      thumbnail: "",
-      descriptionImage: "",
+      thumbnail: blog?.thumbnail ? blog?.thumbnail : "",
+      descriptionImage: blog?.descriptionImage ? blog.descriptionImage: "",
     }
     
     let blogData: BlogType = newBlog;
@@ -61,7 +89,7 @@ export const BlogRegister = () => {
     }
 
     try {
-      await registerBlog(blogData);
+      await updateBlog(blog?._id!, blogData);
 
       if(thumbnailInputRef.current) {
         thumbnailInputRef.current.value = '';
@@ -72,7 +100,6 @@ export const BlogRegister = () => {
       }
 
       setIsAlertVisible(true);
-      setTitle("");
       setTitleCheck("");
 
     } catch (error) {
@@ -108,7 +135,7 @@ export const BlogRegister = () => {
           <MainVisual image={"contact/mv.jpg"}/>
           <Content>
               <div className="c-blog-register">
-                  <SubPageTitle title={"BLOG登録"} sub={""}/>
+                  <SubPageTitle title={"BLOG更新"} sub={""}/>
               </div>
               <SubContent>
                 {isAlertVisible &&
@@ -126,18 +153,26 @@ export const BlogRegister = () => {
                     <dl className="form-def">
                       <dt>サムネイル</dt>
                       <dd>
-                        <p className="form-image-show">
-                          {thumbnailURL && <img src={thumbnailURL} alt="" />}
-                        </p>
+                      <p className="form-image-show">
+                        {
+                          thumbnailURL
+                          ? <img src={thumbnailURL} alt="" />
+                          : blog?.thumbnail && <img src={PUBLIC_FOLDER + blog?.thumbnail} alt="" />
+                        }
+                      </p>
                         <input type="file" accept=".png, .jpeg, .jpg" onChange={(e) => operationFile(e, "Thumbnail")} ref={thumbnailInputRef}/>
                       </dd>
                     </dl>
                     <dl className="form-def">
                       <dt>詳細画像</dt>
                       <dd>
-                        <p className="form-image-show">
-                          {descriptionImageURL && <img src={descriptionImageURL} alt="" />}
-                        </p>
+                      <p className="form-image-show">
+                        {
+                          descriptionImageURL
+                          ? <img src={descriptionImageURL} alt="" />
+                          : blog?.descriptionImage && <img src={PUBLIC_FOLDER + blog?.descriptionImage} alt="" />
+                        }
+                      </p>
                         <input type="file" accept=".png, .jpeg, .jpg" onChange={(e) => operationFile(e, "DescriptionImage")} ref={descriptionImageInputRef}/>
                       </dd>
                     </dl>

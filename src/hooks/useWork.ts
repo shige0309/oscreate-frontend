@@ -1,9 +1,9 @@
-import { getWorkType, workType } from "Type";
+import { GetWorkType, WorkType } from "Type";
 import axios, { AxiosResponse } from "axios";
 
 export const useWork = () => {
 
-    const registerWork = async (work: workType) => {
+    const registerWork = async (work: WorkType) => {
         try {
             await axios.post("/work/register", work);
         } catch (error) {
@@ -11,9 +11,9 @@ export const useWork = () => {
         }
     }
 
-    const getWorks = async (): Promise<AxiosResponse<getWorkType[]>> => {
+    const getWorks = async (): Promise<AxiosResponse<GetWorkType[]>> => {
         try {
-            const response: AxiosResponse<getWorkType[]> = await axios.get("/work/get");
+            const response: AxiosResponse<GetWorkType[]> = await axios.get("/work/get");
             return response;
         } catch (error) {
             alert(`取得に失敗しました。${error}`);
@@ -21,9 +21,9 @@ export const useWork = () => {
         }
     }
 
-    const getDetailWork = async (id: string): Promise<AxiosResponse<getWorkType>> => {
+    const getDetailWork = async (id: string): Promise<AxiosResponse<GetWorkType>> => {
         try {
-            const response: AxiosResponse<getWorkType> = await axios.get(`/work/${id}`);
+            const response: AxiosResponse<GetWorkType> = await axios.get(`/work/${id}`);
             return response;
         } catch (error) {
             alert(`取得に失敗しました。${error}`);

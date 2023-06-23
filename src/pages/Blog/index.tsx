@@ -5,19 +5,22 @@ import { SubPageTitle } from "components/SubPageTitle";
 import { SubContent } from "components/SubContent";
 import { Contact } from "components/Contact";
 import { Footer } from "components/Footer";
-import "./Blog.css";
 import { useEffect, useState } from "react";
 import { useBlog } from "hooks/useBlog";
-import { getBlogType } from "Type";
+import { GetBlogType } from "Type";
 import { useParams } from "react-router-dom";
 import { AxiosResponse } from "axios";
 import { EditorState, convertFromRaw } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
 import parse from "html-react-parser";
+import "./Blog.css";
+import { Link } from "react-router-dom";
+import { useAppSelector } from "stores/hooks";
 
 export const BlogPage = () => {
+  const {admin} = useAppSelector((state) => state);
   const { getDetailBlog } = useBlog();
-  const [ blog, setBlog ] = useState<getBlogType>();
+  const [ blog, setBlog ] = useState<GetBlogType>();
   const id = useParams().id;
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -26,7 +29,7 @@ export const BlogPage = () => {
 
     const getBlog = async () => {
       if(id) {
-        const blog: AxiosResponse<getBlogType> = await getDetailBlog(id);
+        const blog: AxiosResponse<GetBlogType> = await getDetailBlog(id);
 
         const date = new Date(blog.data.updatedAt);
         const formatDate = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
@@ -61,6 +64,7 @@ export const BlogPage = () => {
                 :<p className="blog-thumbnail"><img src="/blog/content-mv.jpg" alt="ポートフォリオサイトをリニューアルしました。" /></p>
                 }
                 {blog ? parse(blog?.content) : ""}
+                { admin.id ? (<p className="blog-edit"><Link to={`/blog/update/${blog?._id}`}>編集する</Link></p>) : null }
                 </div>
               </SubContent>
               <Contact />

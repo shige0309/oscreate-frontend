@@ -1,9 +1,9 @@
 import { FadeInComponent } from "components/FadeInComponent";
-import { getBlogType } from "Type";
+import { GetBlogType } from "Type";
 import { Link } from "react-router-dom";
 import "./BlogCard.css";
 
-export const BlogCard = ({props}: {props: getBlogType}) => {
+export const BlogCard = ({props}: {props: GetBlogType}) => {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
   const date = new Date(props.updatedAt);
   const formattedDate = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
@@ -14,7 +14,7 @@ export const BlogCard = ({props}: {props: getBlogType}) => {
         <Link to={`/blog/${props._id}`}>
           <figure>
             <div className="c-blogCard-img">
-              <p><img src={PUBLIC_FOLDER + props.thumbnail} alt="ポートフォリオサイトをリニューアルしました。" /></p>
+              <p><img src={PUBLIC_FOLDER + props.thumbnail} alt="" /></p>
             </div>
             <figcaption>
               <time dateTime={formattedDate}>{formattedDate}</time>

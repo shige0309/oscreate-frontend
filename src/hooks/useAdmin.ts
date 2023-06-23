@@ -1,4 +1,4 @@
-import { adminType } from 'Type'
+import { AdminType } from 'Type'
 import axios, { AxiosResponse } from 'axios';
 import { useAppDispatch } from 'stores/hooks';
 import { deleteAdmin, setAdmin } from 'stores/slice/adminSlice';
@@ -8,7 +8,7 @@ import { deleteAdmin, setAdmin } from 'stores/slice/adminSlice';
 export const useAdmin = () => {
     const dispatch = useAppDispatch();
 
-    const login = async (admin: adminType) => {
+    const login = async (admin: AdminType) => {
 
         const response:AxiosResponse = await axios.post("/admin/login", admin);
         const adminId: string = response.data.admin._id;
@@ -39,7 +39,7 @@ export const useAdmin = () => {
         }
     }
 
-    const updateAdmin = async (updateData: adminType): Promise<AxiosResponse<string, string>> => {
+    const updateAdmin = async (updateData: AdminType): Promise<AxiosResponse<string, string>> => {
         try {
             const response: AxiosResponse<string, string> = await axios.put("/admin/update", updateData);
             return response;

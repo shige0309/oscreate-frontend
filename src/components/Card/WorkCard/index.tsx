@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import "./Card.css";
 import { FadeInComponent } from "components/FadeInComponent";
-import { getWorkType } from "Type";
+import { GetWorkType } from "Type";
 
-export const Card = ({props}: {props: getWorkType}) => {
+export const Card = ({props}: {props: GetWorkType}) => {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
       <div className="c-card">

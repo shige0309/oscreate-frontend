@@ -9,7 +9,7 @@ import { FormContainer } from "components/Form/FormContainer"
 import { useCallback, useEffect, useState } from "react"
 import { useAdmin } from "hooks/useAdmin"
 import { AxiosResponse } from "axios"
-import { adminType } from "Type"
+import { AdminType } from "Type"
 import { Alert } from "components/Alert"
 import "./AdminUpdate.css"
 
@@ -58,7 +58,7 @@ export const AdminUpdate = () => {
     }
 
     try {
-      const updateData: adminType = {
+      const updateData: AdminType = {
         email: email,
         password: password
       }

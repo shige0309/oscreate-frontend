@@ -2,14 +2,14 @@
 import { SectionTitle } from "components/SectionTitle";
 import { BlogCard } from "components/Card/BlogCard";
 import { useEffect, useState } from "react";
-import { getBlogType } from "Type";
+import { GetBlogType } from "Type";
 import {useBlog} from "hooks/useBlog";
 import { EditorState, convertFromRaw } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
 import "./HomeBlog.css";
 
 export const HomeBlog = () => {
-  const [ blogs, setBlogs ] = useState<getBlogType[]>();
+  const [ blogs, setBlogs ] = useState<GetBlogType[]>();
   const { getBlogs } = useBlog();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const HomeBlog = () => {
     const getBlog = async () => {
       const result = await getBlogs();
 
-      let blogData: getBlogType[];
+      let blogData: GetBlogType[];
 
       blogData = result.data.map((blog) => {
       const rawContent = JSON.parse(blog.content as string);

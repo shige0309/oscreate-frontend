@@ -33,6 +33,12 @@
     font-size: 2rem;
 }
 
+.blog-edit a {
+    margin: 2rem 0 0;
+    display: block;
+    text-align: right;
+}
+
 @media screen and (max-width: 576px){
     .blog-title {
         font-size: 6vw;

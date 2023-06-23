@@ -1,9 +1,9 @@
-export type adminType = {
+export type AdminType = {
     email: string,
     password: string;
 }
 
-export type workType = {
+export type WorkType = {
     adminId: string;
     tag: string;
     title: string;
@@ -11,7 +11,7 @@ export type workType = {
     descriptionImage: string;
 }
 
-export type blogType = {
+export type BlogType = {
     adminId: string;
     title: string;
     content: string;
@@ -19,22 +19,22 @@ export type blogType = {
     descriptionImage: string;
 }
 
-export type newImageType = {
+export type NewImageType = {
     thumbnail: File | null;
     descriptionImage: File | null;
 }
 
-export type uploadImageData = {
+export type UploadImageData = {
     thumbnail: string;
     descriptionImage: string;
 }
 
-export type imageType = {
+export type ImageType = {
   thumbnail: File | null;
   descriptionImage: File | null;
 }
 
-export type getBlogType = {
+export type GetBlogType = {
     _id: string;
     adminId: string;
     title: string;
@@ -45,7 +45,7 @@ export type getBlogType = {
     updatedAt: string;
 }
 
-export type getWorkType = {
+export type GetWorkType = {
     _id: string;
     adminId: string;
     tag: string;
@@ -54,4 +54,10 @@ export type getWorkType = {
     descriptionImage: string;
     createdAt: string;
     updatedAt: string;
-  };
+}
+
+export type InputFormType = {
+    name: string;
+    email: string;
+    content: string;
+}

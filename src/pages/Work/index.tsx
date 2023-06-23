@@ -8,14 +8,14 @@ import { SubPageTitle } from "components/SubPageTitle";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useWork } from "hooks/useWork";
-import { getWorkType } from "Type";
+import { GetWorkType } from "Type";
 import { AxiosResponse } from "axios";
 import "./Work.css";
 
 export const WorkPage = () => {
   const { getDetailWork } = useWork();
   const id = useParams().id;
-  const [ work, setWork ] = useState<getWorkType>();
+  const [ work, setWork ] = useState<GetWorkType>();
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
   
   useEffect(() => {
@@ -24,7 +24,7 @@ export const WorkPage = () => {
     const fetchWork = async () => {
 
       if(id) {
-        const work: AxiosResponse<getWorkType> = await getDetailWork(id);
+        const work: AxiosResponse<GetWorkType> = await getDetailWork(id);
         setWork(work.data);
       }
     }

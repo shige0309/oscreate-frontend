@@ -8,7 +8,7 @@ import { Button } from "components/Button";
 import { FormContainer } from "components/Form/FormContainer";
 import { useCallback, useRef, useState } from "react";
 import { useAppSelector } from "stores/hooks";
-import { workType } from "Type";
+import { WorkType } from "Type";
 import { useWork } from "hooks/useWork";
 import { Alert } from "components/Alert";
 import {useUploadImage} from "hooks/useUploadImage";
@@ -57,7 +57,7 @@ export const WorksRegister = () => {
       return false;
     }
 
-    const newWork: workType = {
+    const newWork: WorkType = {
       adminId: admin.id!,
       tag: tag,
       title: title,
@@ -65,10 +65,10 @@ export const WorksRegister = () => {
       descriptionImage: "",
     }
 
-    let workData: workType = newWork;
+    let workData: WorkType = newWork;
 
     if(thumbnail || descriptionImage) {
-      workData = prepareAndUploadImages(thumbnail, descriptionImage, workData, newWork) as workType;
+      workData = prepareAndUploadImages(thumbnail, descriptionImage, workData, newWork) as WorkType;
     }
 
     try {

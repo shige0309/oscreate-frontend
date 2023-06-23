@@ -1,4 +1,4 @@
-import { blogType, newImageType, uploadImageData, workType } from "Type";
+import { BlogType, NewImageType, UploadImageData, WorkType } from "Type";
 import axios from "axios";
 
 
@@ -7,10 +7,10 @@ export const useUploadImage = () => {
     const prepareAndUploadImages = (
         thumbnail: File | null,
         descriptionImage: File | null,
-        uploadData: blogType | workType,
-        newData: blogType | workType): blogType | workType => {
+        uploadData: BlogType | WorkType,
+        newData: BlogType | WorkType): BlogType | WorkType => {
 
-        const images: newImageType = {
+        const images: NewImageType = {
             thumbnail: thumbnail || null,
             descriptionImage: descriptionImage || null,
         }
@@ -19,7 +19,7 @@ export const useUploadImage = () => {
     
         uploadImagesToServer(images, nowDate);
     
-        const uploadImageData: uploadImageData = {
+        const uploadImageData: UploadImageData = {
             thumbnail: thumbnail !== null ? nowDate + "-thumbnail-" + thumbnail.name : "",
             descriptionImage: descriptionImage !== null ? nowDate + "-descriptionImage-" + descriptionImage.name : "",
         }
