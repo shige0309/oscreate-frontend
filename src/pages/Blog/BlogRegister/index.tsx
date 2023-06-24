@@ -148,7 +148,7 @@ export const BlogRegister = () => {
                         </dd>
                     </dl>
                     <div className="contact-button">
-                      <Button buttonType={"button"} text={"登録する"} link={""}/>
+                      <Button buttonType={"button"} text={"登録する"} link={null} handleClick={null}/>
                     </div>
                   </form>
                 </FormContainer>

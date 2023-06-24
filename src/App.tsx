@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useAdmin } from "hooks/useAdmin";
 import { BlogUpdate } from "pages/Blog/BlogUpdate";
+import { ContactConfirmationPage } from "pages/Contact/ContactConfirmation";
 
 function App() {
   const { admin } = useAppSelector((state) => state);
@@ -35,6 +36,7 @@ function App() {
           <Route path="/work/:id" element={<WorkPage/>}/>
           <Route path="/blog/:id" element={<BlogPage />}/>
           <Route path="/contact" element={<ContactFormPage />}/>
+          <Route path="/contact/confirmation" element={<ContactConfirmationPage />}/>
           <Route path="/contact/thanks" element={<ContactThanksPage />}/>
           <Route path="/login" element={admin.id ? <WorksRegister /> : <Login />}/>
           <Route path="/works/register" element={admin.id ? <WorksRegister /> : <Login />}/>

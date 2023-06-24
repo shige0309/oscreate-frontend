@@ -5,12 +5,18 @@ type buttonProps = {
   buttonType: "button" | "link";
   text: string;
   link: string | null;
+  handleClick: React.MouseEventHandler<HTMLButtonElement> | null;
 }
 
 export const Button = (props: buttonProps) => {
   if (props.buttonType === "button") {
 
-    return <button type="submit" className="c-form-button">{props.text}</button>;
+    if(props.handleClick) {
+      return <button type="submit" className="c-form-button" onClick={props.handleClick}>{props.text}</button>;
+    } else {
+      return <button type="submit" className="c-form-button">{props.text}</button>;
+    }
+
     
   } else {
 

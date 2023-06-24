@@ -84,7 +84,7 @@ export const Login = () => {
                     </dd>
                   </dl>
                   <div className="contact-button">
-                    <Button buttonType={"button"} text={"ログイン"} link={"/"}/>
+                    <Button buttonType={"button"} text={"ログイン"} link={null} handleClick={null}/>
                   </div>
                 </form>
                 <p className="login-topLink">

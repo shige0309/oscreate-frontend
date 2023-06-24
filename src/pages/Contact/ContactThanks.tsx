@@ -1,5 +1,4 @@
 import { Button } from "components/Button"
-import { Contact } from "components/Contact"
 import { Content } from "components/Content"
 import { Footer } from "components/Footer"
 import { FormContainer } from "components/Form/FormContainer"
@@ -7,8 +6,16 @@ import { MainVisual } from "components/MainVisual"
 import { Sidebar } from "components/Sidebar/Front"
 import { SubContent } from "components/SubContent"
 import { SubPageTitle } from "components/SubPageTitle"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { deleteContact } from "stores/slice/contactSlice"
 
 export const ContactThanksPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(deleteContact());
+  }, [])
   return (
     <>
       <Sidebar />
@@ -26,11 +33,10 @@ export const ContactThanksPage = () => {
                   <p className="contact-thanks-text">内容確認の上、ご連絡を致しますので、今しばらくお待ちくださいませ。<br />
                       3日経っても返事がない場合、申し訳ありませんが再度ご連絡ください。</p>
                   <div className="contact-button">
-                      <Button buttonType={"link"} text={"トップページに戻る"} link={""}/>
+                      <Button buttonType={"link"} text={"トップページに戻る"} link={"/"} handleClick={null}/>
                   </div>
                 </FormContainer>
               </SubContent>
-              <Contact />
           </Content>
       </main>
       <Footer />

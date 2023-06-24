@@ -44,6 +44,23 @@
     text-align: center;
 }
 
+.form-def textarea {
+    font-size: 1.6rem;
+}
+
+.contact-button-return {
+    margin: 0 0 2rem;
+}
+
+.contact-button-return .c-form-button {
+    background-color: #000;
+}
+
+.contact-button-return .c-form-button::after {
+    left: 3rem;
+    transform: translateY(-50%) rotate(180deg);
+}
+
 @media screen and (max-width: 769px){
     .form-def {
         flex-direction: column;

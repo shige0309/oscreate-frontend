@@ -6,30 +6,28 @@ import { SubContent } from "components/SubContent";
 import { FormContainer } from "components/Form/FormContainer";
 import { Button } from "components/Button"
 import { Footer } from "components/Footer";
-import "./Contact.css";
-import { useAppDispatch, useAppSelector } from "stores/hooks";
-import { useForm } from "react-hook-form";
-import { InputFormType } from "Type";
-import { setContact } from "stores/slice/contactSlice";
+import { useAppSelector } from "stores/hooks";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useContact } from "hooks/useContact";
+import "./Contact.css";
 
-export const ContactFormPage = () => {
+export const ContactConfirmationPage = () => {
   const { contact } = useAppSelector((state) => state);
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const {register, handleSubmit, formState: {errors}} = useForm<InputFormType>({
-    defaultValues: {
-      name: contact.name,
-      email: contact.email,
-      content: contact.content,
+  const { registerContact } = useContact();
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+    if(contact.name === "" && contact.email === "" && contact.content === "") {
+      navigate("/contact");
     }
-  });
+  }, [])
 
-  const onSubmit = handleSubmit((data: InputFormType) => {
-    dispatch(setContact(data));
-    navigate("/contact/confirmation");
-  })
-
+  const handleSubmit = async () => {
+    await registerContact(contact);
+    navigate("/contact/thanks");
+  }
 
   return (
     <>
@@ -44,32 +42,22 @@ export const ContactFormPage = () => {
               </div>
               <SubContent>
                 <FormContainer>
-                  <form onSubmit={onSubmit}>
                     <dl className="form-def">
                       <dt>お名前</dt>
-                      <dd>
-                        <input type="text" {...register("name", {required: "※入力が必須の項目です"})} required/>
-                        {errors.name?.message && <p className="form-attention">{errors.name.message}</p>}
-                      </dd>
+                      <dd>{contact.name}</dd>
                     </dl>
                     <dl className="form-def">
                       <dt>メールアドレス</dt>
-                      <dd>
-                        <input type="email" {...register("email", {required: "※入力が必須の項目です"})} required/>
-                        {errors.name?.message && <p className="form-attention">{errors.email?.message}</p>}
-                      </dd>
+                      <dd>{contact.email}</dd>
                     </dl>
                     <dl className="form-def">
                       <dt>内容</dt>
-                      <dd>
-                        <textarea {...register("content", {required: "※入力が必須の項目です"})}></textarea>
-                        {errors.content?.message && <p className="form-attention">{errors.content?.message}</p>}
-                      </dd>
+                      <dd>{contact.content}</dd>
                     </dl>
                     <div className="contact-button">
-                      <Button buttonType={"button"} text={"確認画面へ"} link={null} handleClick={null}/>
+                      <p className="contact-button-return"><Button buttonType={"link"} text={"戻る" } link={"/contact/"} handleClick={null}/></p>
+                      <p><Button buttonType={"button"} text={"送信する" } link={null} handleClick={handleSubmit}/></p>
                     </div>
-                  </form>
                 </FormContainer>
               </SubContent>
           </Content>

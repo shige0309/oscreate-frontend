@@ -149,7 +149,7 @@ export const WorksRegister = () => {
                       <dd><input type="file" accept=".png, .jpeg, .jpg, image/svg+xml" onChange={(e) => operationFile(e, "DescriptionImage")} ref={descriptionImageInputRef}/></dd>
                     </dl>
                     <div className="contact-button">
-                      <Button buttonType={"button"} text={"登録する"} link={""}/>
+                      <Button buttonType={"button"} text={"登録する"} link={null} handleClick={null}/>
                     </div>
                   </form>
                 </FormContainer>
