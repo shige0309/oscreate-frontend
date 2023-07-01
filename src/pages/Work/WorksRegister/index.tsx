@@ -57,21 +57,22 @@ export const WorksRegister = () => {
       return false;
     }
 
-    const newWork: WorkType = {
-      adminId: admin.id!,
-      tag: tag,
-      title: title,
-      thumbnail: "",
-      descriptionImage: "",
-    }
-
-    let workData: WorkType = newWork;
-
-    if(thumbnail || descriptionImage) {
-      workData = prepareAndUploadImages(thumbnail, descriptionImage, workData, newWork) as WorkType;
-    }
-
     try {
+
+      const newWork: WorkType = {
+        adminId: admin.id!,
+        tag: tag,
+        title: title,
+        thumbnail: "",
+        descriptionImage: "",
+      }
+
+      let workData: WorkType = newWork;
+
+      if(thumbnail || descriptionImage) {
+        workData = prepareAndUploadImages("work/", thumbnail, descriptionImage, workData, newWork) as WorkType;
+      }
+
       await registerWork(workData);
       
       if(thumbnailInputRef.current) {

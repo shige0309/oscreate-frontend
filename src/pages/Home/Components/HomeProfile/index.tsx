@@ -21,7 +21,7 @@ export const HomeProfile = () => {
                         <br />
                         歳がどうこうおっしゃる方もいますが、年齢は関係ないと思っています。この業界は学びや挑戦が必要で、それを否定することはこの業界ではやっていけないと思っています。辛い気持ちで、学んでも成長しないと思いますので、楽しくさせていただいています。<br />
                         <br />
-                        このサイト自体はMongoDB・Express・React.js・Node.jsで作成しています。</p>
+                        このサイト自体はMongoDB・Express・React.js・Node.js、画像はAmazon S3で構築しています。</p>
                     </figcaption>
                 </figure>
               </FadeInComponent>

@@ -5,6 +5,7 @@ import axios from "axios";
 export const useUploadImage = () => {
     
     const prepareAndUploadImages = (
+        folder: string,
         thumbnail: File | null,
         descriptionImage: File | null,
         uploadData: BlogType | WorkType,
@@ -17,7 +18,7 @@ export const useUploadImage = () => {
 
         const nowDate: number = Date.now();
     
-        uploadImagesToServer(images, nowDate);
+        uploadImagesToServer(images, nowDate, folder);
     
         const uploadImageData: UploadImageData = {
             thumbnail: thumbnail !== null ? nowDate + "-thumbnail-" + thumbnail.name : "",
@@ -29,10 +30,16 @@ export const useUploadImage = () => {
         return uploadData;
     }
 
-    const uploadImagesToServer = async (images: Record<string, File | null>, nowDate: number) => {
+    const uploadImagesToServer = async (images: Record<string, File | null>, nowDate: number, folder: string) => {
         await Promise.all(Object.entries(images)
             .filter(([_, image]) => image !== null) 
             .map(async ([type, image]) => {
+
+                if(image!.size > 2 * 1024 * 1024) {
+                    alert("ファイルサイズが大きすぎます。2MB以下のファイルを選択してください。");
+                    return
+                }
+
                 const data = new FormData();
             
                 let fileName;
@@ -44,13 +51,12 @@ export const useUploadImage = () => {
                     fileName = nowDate + image!.name;
                 }
 
-                console.log(fileName);
-            
                 data.append("name", fileName);
                 data.append("file", image!);
+                data.append("folder", folder);
 
                 try {
-                    await axios.post("/upload", data);
+                    await axios.post("/s3/upload", data);
                 } catch (error) {
                     alert(`画像のアップロードに失敗しました。${error}`);
                 }

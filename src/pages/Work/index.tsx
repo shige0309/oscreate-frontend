@@ -16,7 +16,7 @@ export const WorkPage = () => {
   const { getDetailWork } = useWork();
   const id = useParams().id;
   const [ work, setWork ] = useState<GetWorkType>();
-  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+  const PUBLIC_FOLDER = process.env.REACT_APP_S3_OBJ_URL;
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,7 +43,7 @@ export const WorkPage = () => {
             <h1 className="work-title">{work ? work.title : ""}</h1>
           </div>
           <SubContent>
-            {work && <p className="work-detail"><img src={PUBLIC_FOLDER + work.descriptionImage} alt="" /></p>}
+            {work && <p className="work-detail"><img src={PUBLIC_FOLDER + "work/" + work.descriptionImage} alt="" /></p>}
           </SubContent>
           <Contact />
         </Content>

@@ -12,17 +12,17 @@ import { useParams } from "react-router-dom";
 import { AxiosResponse } from "axios";
 import { EditorState, convertFromRaw } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
-import parse from "html-react-parser";
-import "./Blog.css";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "stores/hooks";
+import parse from "html-react-parser";
+import "./Blog.css";
 
 export const BlogPage = () => {
   const {admin} = useAppSelector((state) => state);
   const { getDetailBlog } = useBlog();
   const [ blog, setBlog ] = useState<GetBlogType>();
   const id = useParams().id;
-  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+  const PUBLIC_FOLDER = process.env.REACT_APP_S3_OBJ_URL;
 
   useEffect(() => {
     window.scrollTo(0,0);
@@ -60,8 +60,8 @@ export const BlogPage = () => {
               <SubContent>
                 <div className="blog-content">
                 {blog
-                ?<p className="blog-thumbnail"><img src={PUBLIC_FOLDER + blog.descriptionImage} alt="ポートフォリオサイトをリニューアルしました。" /></p>
-                :<p className="blog-thumbnail"><img src="/blog/content-mv.jpg" alt="ポートフォリオサイトをリニューアルしました。" /></p>
+                ?<p className="blog-thumbnail"><img src={PUBLIC_FOLDER + "blog/" + blog.descriptionImage} alt={blog?.title} /></p>
+                :<p className="blog-thumbnail"><img src="/blog/content-mv.jpg" alt="ブログno-image" /></p>
                 }
                 {blog ? parse(blog?.content) : ""}
                 { admin.id ? (<p className="blog-edit"><Link to={`/blog/update/${blog?._id}`}>編集する</Link></p>) : null }

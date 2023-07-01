@@ -46,21 +46,22 @@ export const BlogRegister = () => {
       return false;
     }
 
-    const newBlog: BlogType = {
-      adminId: admin.id!,
-      title: title,
-      content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
-      thumbnail: "",
-      descriptionImage: "",
-    }
-    
-    let blogData: BlogType = newBlog;
-
-    if(thumbnail || descriptionImage) {
-      blogData = prepareAndUploadImages(thumbnail, descriptionImage, blogData, newBlog) as BlogType;
-    }
-
     try {
+
+      const newBlog: BlogType = {
+        adminId: admin.id!,
+        title: title,
+        content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
+        thumbnail: "",
+        descriptionImage: "",
+      }
+      
+      let blogData: BlogType = newBlog;
+
+      if(thumbnail || descriptionImage) {
+        blogData = prepareAndUploadImages("blog/",thumbnail, descriptionImage, blogData, newBlog) as BlogType;
+      }
+      
       await registerBlog(blogData);
 
       if(thumbnailInputRef.current) {

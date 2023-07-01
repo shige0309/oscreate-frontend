@@ -21,7 +21,7 @@ import { AxiosResponse } from "axios"
 import "./BlogUpdate.css"
 
 export const BlogUpdate = () => {
-  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+  const PUBLIC_FOLDER = process.env.REACT_APP_S3_OBJ_URL;
   const {admin} = useAppSelector((state) => state);
   const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
@@ -85,7 +85,7 @@ export const BlogUpdate = () => {
     let blogData: BlogType = newBlog;
 
     if(thumbnail || descriptionImage) {
-      blogData = prepareAndUploadImages(thumbnail, descriptionImage, blogData, newBlog) as BlogType;
+      blogData = prepareAndUploadImages("blog/",thumbnail, descriptionImage, blogData, newBlog) as BlogType;
     }
 
     try {
@@ -157,7 +157,7 @@ export const BlogUpdate = () => {
                         {
                           thumbnailURL
                           ? <img src={thumbnailURL} alt="" />
-                          : blog?.thumbnail && <img src={PUBLIC_FOLDER + blog?.thumbnail} alt="" />
+                          : blog?.thumbnail && <img src={PUBLIC_FOLDER + "blog/" + blog?.thumbnail} alt="" />
                         }
                       </p>
                         <input type="file" accept=".png, .jpeg, .jpg" onChange={(e) => operationFile(e, "Thumbnail")} ref={thumbnailInputRef}/>
@@ -170,7 +170,7 @@ export const BlogUpdate = () => {
                         {
                           descriptionImageURL
                           ? <img src={descriptionImageURL} alt="" />
-                          : blog?.descriptionImage && <img src={PUBLIC_FOLDER + blog?.descriptionImage} alt="" />
+                          : blog?.descriptionImage && <img src={PUBLIC_FOLDER + "blog/" + blog?.descriptionImage} alt="" />
                         }
                       </p>
                         <input type="file" accept=".png, .jpeg, .jpg" onChange={(e) => operationFile(e, "DescriptionImage")} ref={descriptionImageInputRef}/>

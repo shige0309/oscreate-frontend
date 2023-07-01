@@ -6,12 +6,12 @@ import { SubContent } from "components/SubContent";
 import { FormContainer } from "components/Form/FormContainer";
 import { Button } from "components/Button"
 import { Footer } from "components/Footer";
-import "./Contact.css";
 import { useAppDispatch, useAppSelector } from "stores/hooks";
 import { useForm } from "react-hook-form";
 import { InputFormType } from "Type";
 import { setContact } from "stores/slice/contactSlice";
 import { useNavigate } from "react-router-dom";
+import "./Contact.css";
 
 export const ContactFormPage = () => {
   const { contact } = useAppSelector((state) => state);
