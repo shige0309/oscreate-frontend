@@ -28,8 +28,7 @@ export const ContactFormPage = () => {
   const onSubmit = handleSubmit((data: InputFormType) => {
     dispatch(setContact(data));
     navigate("/contact/confirmation");
-  })
-
+  });
 
   return (
     <>

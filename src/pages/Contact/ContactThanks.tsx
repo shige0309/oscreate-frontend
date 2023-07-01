@@ -14,6 +14,7 @@ export const ContactThanksPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    
     dispatch(deleteContact());
   }, [])
   return (

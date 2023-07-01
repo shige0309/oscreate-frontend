@@ -56,7 +56,7 @@ export const useUploadImage = () => {
                 data.append("folder", folder);
 
                 try {
-                    await axios.post("/s3/upload", data);
+                    await axios.post("/imageUpload", data);
                 } catch (error) {
                     alert(`画像のアップロードに失敗しました。${error}`);
                 }

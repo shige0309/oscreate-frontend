@@ -1,4 +1,4 @@
-import { BlogType, GetBlogType, GetWorkType } from "Type"
+import { BlogType, GetBlogType } from "Type"
 import axios, { AxiosResponse } from "axios"
 
 export const useBlog = () => {
