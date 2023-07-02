@@ -17,11 +17,11 @@ export const HomeProfile = () => {
                     <figcaption>
                         <p className="c-homeProfile-card-nameJp">岡田 茂之</p>
                         <p className="c-homeProfile-card-nameEn">Shigeyuki Okada</p>
-                        <p className="c-homeProfile-card-nameText">デザインもできますが、最近ではコーディング（Javascript）が面白く、毎日のようにReactやNode.js、Firebaseを活用したサイト制作が趣味になっています。<br />
+                        <p className="c-homeProfile-card-nameText">デザインも可能ですが、最近ではコーディング（Javascript）が面白く、毎日のようにReactやNode.js、Firebaseを活用したサイト制作が趣味になっています。<br />
                         <br />
-                        歳がどうこうおっしゃる方もいますが、年齢は関係ないと思っています。この業界は学びや挑戦が必要で、それを否定することはこの業界ではやっていけないと思っています。辛い気持ちで、学んでも成長しないと思いますので、楽しくさせていただいています。<br />
+                        年齢を問題にする方もいらっしゃいますが、私は年齢は関係ないと考えています。この業界は絶えず学び、新しい挑戦が求められます。それを否定すれば、この業界で生き抜くことは難しいと私は感じています。そして、辛く感じながら学ぶよりも、楽しみながら学んだ方が成長すると思います。そのため、私はいつも楽しみながら学んでいます。<br />
                         <br />
-                        このサイト自体はMongoDB・Express・React.js・Node.js、画像はAmazon S3で構築しています。</p>
+                        このポートフォリオサイトはMongoDB・Express・React.js・Node.js、画像はAmazon S3、EメールサービスはAmazon SESで構築しています。</p>
                     </figcaption>
                 </figure>
               </FadeInComponent>
@@ -53,7 +53,7 @@ export const HomeProfile = () => {
                       </dl>
                       <dl className="c-homeProfile-card-block-def">
                         <dt>その他</dt>
-                        <dd>Git・Gulp</dd>
+                        <dd>Git・Gulp、上級ウェブ解析士</dd>
                       </dl>
                     </figcaption>
                   </figure>
