@@ -25,7 +25,7 @@ export const useAdmin = () => {
             const id = response.data._id;
             dispatch(setAdmin(id));
         } catch (error) {
-            console.log(error);
+            alert(`エラーが発生しました${error}`);
         }
     }
 
@@ -34,7 +34,7 @@ export const useAdmin = () => {
             const response: AxiosResponse<string, string> = await axios.get("/admin");
             return response;
         } catch (error) {
-            console.log(error);
+            alert(`エラーが発生しました${error}`);
             throw error;
         }
     }
@@ -44,7 +44,7 @@ export const useAdmin = () => {
             const response: AxiosResponse<string, string> = await axios.put("/admin/update", updateData);
             return response;
         } catch (error) {
-            console.log(error);
+            alert(`エラーが発生しました${error}`);
             throw error;
         }
     }
